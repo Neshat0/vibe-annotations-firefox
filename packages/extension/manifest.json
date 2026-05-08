@@ -1,12 +1,17 @@
 {
   "manifest_version": 2,
-  "name": "Vibe Annotations - Visual Feedback for AI Coding Agents",
+  "name": "Clone Firefox Vibe Annotations for AI Agents",
   "version": "1.6.3",
   "description": "Visual annotations for localhost dev projects. Send feedback to AI coding agents via MCP.",
   "author": "Raphael Regnier - Spellbind Creative Studio",
   "browser_specific_settings": {
     "gecko": {
       "id": "vibe-annotations@spellbind.local",
+      "data_collection_permissions": {
+        "required": [
+          "websiteContent"
+        ]
+      },
       "strict_min_version": "121.0"
     }
   },
