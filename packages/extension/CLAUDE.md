@@ -34,12 +34,12 @@ bridge-handler → content.js
 | `toolbar-docs.js` | ~420 | Documentation/guide templates for settings dropdown |
 | `badge-manager.js` | ~450 | Pin rendering, DOM observer, style injection |
 | `element-context.js` | ~940 | Selector generation (8-tier fallback), source mapping |
-| `api-bridge.js` | ~300 | All chrome.runtime.sendMessage + chrome.storage calls |
+| `api-bridge.js` | ~300 | All `ext.runtime.sendMessage` + `ext.storage` calls |
 
 ### Storage
 
 - **All mutations** go through `background.js` via `sendMessage()` (serialized with storage lock).
-- Content scripts read directly from `chrome.storage.local` but never write.
+- Content scripts read directly from `ext.storage.local` but never write.
 - Background syncs bidirectionally with the server every 10 seconds.
 
 ### Shadow DOM

@@ -1,4 +1,4 @@
-// Wraps all chrome.runtime.sendMessage and chrome.storage calls
+// Wraps all ext.runtime.sendMessage and ext.storage calls
 // Single interface for data operations used by all modules
 
 var VibeAPI = (() => {
@@ -49,7 +49,7 @@ var VibeAPI = (() => {
 
   async function _checkViaBg() {
     try {
-      const r = await chrome.runtime.sendMessage({ action: 'checkMCPStatus' });
+      const r = await ext.runtime.sendMessage({ action: 'checkMCPStatus' });
       return { connected: !!(r && r.success && r.status && r.status.connected) };
     } catch {
       return { connected: false };
@@ -65,7 +65,7 @@ var VibeAPI = (() => {
 
   async function loadAnnotations() {
     try {
-      const result = await chrome.storage.local.get(['annotations']);
+      const result = await ext.storage.local.get(['annotations']);
       const all = result.annotations || [];
       return all.filter(a => a.url === window.location.href);
     } catch {
@@ -75,7 +75,7 @@ var VibeAPI = (() => {
 
   async function loadProjectAnnotations() {
     try {
-      const result = await chrome.storage.local.get(['annotations']);
+      const result = await ext.storage.local.get(['annotations']);
       const all = result.annotations || [];
       const origin = window.location.origin;
       return all.filter(a => {
@@ -87,25 +87,25 @@ var VibeAPI = (() => {
   }
 
   async function saveAnnotation(annotation) {
-    const r = await chrome.runtime.sendMessage({ action: 'saveAnnotation', annotation });
+    const r = await ext.runtime.sendMessage({ action: 'saveAnnotation', annotation });
     if (!r || !r.success) throw new Error(r?.error || 'save failed');
     return true;
   }
 
   async function updateAnnotation(id, updates) {
-    const r = await chrome.runtime.sendMessage({ action: 'updateAnnotation', id, updates });
+    const r = await ext.runtime.sendMessage({ action: 'updateAnnotation', id, updates });
     if (!r || !r.success) throw new Error(r?.error || 'update failed');
     return true;
   }
 
   async function deleteAnnotation(id) {
-    const r = await chrome.runtime.sendMessage({ action: 'deleteAnnotation', id });
+    const r = await ext.runtime.sendMessage({ action: 'deleteAnnotation', id });
     if (!r || !r.success) throw new Error(r?.error || 'delete failed');
     return true;
   }
 
   async function deleteAnnotationsByUrl() {
-    const r = await chrome.runtime.sendMessage({ action: 'deleteAnnotationsByUrl', url: window.location.href });
+    const r = await ext.runtime.sendMessage({ action: 'deleteAnnotationsByUrl', url: window.location.href });
     if (!r || !r.success) throw new Error(r?.error || 'bulk delete failed');
     return r.count || 0;
   }
@@ -113,7 +113,7 @@ var VibeAPI = (() => {
   // --- Storage listeners ---
 
   function onAnnotationsChanged(cb) {
-    chrome.storage.onChanged.addListener((changes, ns) => {
+    ext.storage.onChanged.addListener((changes, ns) => {
       if (ns === 'local' && changes.annotations) {
         cb(changes.annotations.newValue || []);
       }
@@ -126,7 +126,7 @@ var VibeAPI = (() => {
 
   async function getScreenshotEnabled() {
     try {
-      const r = await chrome.storage.local.get(['screenshotEnabled']);
+      const r = await ext.storage.local.get(['screenshotEnabled']);
       _screenshotEnabledCache = r.screenshotEnabled !== undefined ? r.screenshotEnabled : true;
       return _screenshotEnabledCache;
     } catch {
@@ -141,13 +141,13 @@ var VibeAPI = (() => {
   async function saveScreenshotEnabled(enabled) {
     _screenshotEnabledCache = enabled;
     try {
-      await chrome.storage.local.set({ screenshotEnabled: enabled });
+      await ext.storage.local.set({ screenshotEnabled: enabled });
     } catch { /* ignore */ }
   }
 
   async function getToolbarPosition() {
     try {
-      const r = await chrome.storage.local.get(['vibeToolbarPos']);
+      const r = await ext.storage.local.get(['vibeToolbarPos']);
       return r.vibeToolbarPos || null;
     } catch {
       return null;
@@ -156,13 +156,13 @@ var VibeAPI = (() => {
 
   async function saveToolbarPosition(pos) {
     try {
-      await chrome.storage.local.set({ vibeToolbarPos: pos });
+      await ext.storage.local.set({ vibeToolbarPos: pos });
     } catch { /* ignore */ }
   }
 
   async function getToolbarCollapsed() {
     try {
-      const r = await chrome.storage.local.get(['vibeToolbarCollapsed']);
+      const r = await ext.storage.local.get(['vibeToolbarCollapsed']);
       return !!r.vibeToolbarCollapsed;
     } catch {
       return false;
@@ -171,13 +171,13 @@ var VibeAPI = (() => {
 
   async function saveToolbarCollapsed(collapsed) {
     try {
-      await chrome.storage.local.set({ vibeToolbarCollapsed: collapsed });
+      await ext.storage.local.set({ vibeToolbarCollapsed: collapsed });
     } catch { /* ignore */ }
   }
 
   async function getClearOnCopy() {
     try {
-      const r = await chrome.storage.local.get(['vibeClearOnCopy']);
+      const r = await ext.storage.local.get(['vibeClearOnCopy']);
       return !!r.vibeClearOnCopy;
     } catch {
       return false;
@@ -186,13 +186,13 @@ var VibeAPI = (() => {
 
   async function saveClearOnCopy(enabled) {
     try {
-      await chrome.storage.local.set({ vibeClearOnCopy: enabled });
+      await ext.storage.local.set({ vibeClearOnCopy: enabled });
     } catch { /* ignore */ }
   }
 
   async function getBadgeColor() {
     try {
-      const r = await chrome.storage.local.get(['vibeBadgeColor']);
+      const r = await ext.storage.local.get(['vibeBadgeColor']);
       return r.vibeBadgeColor || '#D03D68';
     } catch {
       return '#D03D68';
@@ -201,13 +201,13 @@ var VibeAPI = (() => {
 
   async function saveBadgeColor(color) {
     try {
-      await chrome.storage.local.set({ vibeBadgeColor: color });
+      await ext.storage.local.set({ vibeBadgeColor: color });
     } catch { /* ignore */ }
   }
 
   async function getOverlayHidden() {
     try {
-      const r = await chrome.storage.local.get(['vibeOverlayHidden']);
+      const r = await ext.storage.local.get(['vibeOverlayHidden']);
       return !!r.vibeOverlayHidden;
     } catch {
       return false;
@@ -216,13 +216,13 @@ var VibeAPI = (() => {
 
   async function saveOverlayHidden(hidden) {
     try {
-      await chrome.storage.local.set({ vibeOverlayHidden: !!hidden });
+      await ext.storage.local.set({ vibeOverlayHidden: !!hidden });
     } catch { /* ignore */ }
   }
 
   async function getSkipDeleteConfirm() {
     try {
-      const r = await chrome.storage.local.get(['vibeSkipDeleteConfirm']);
+      const r = await ext.storage.local.get(['vibeSkipDeleteConfirm']);
       return !!r.vibeSkipDeleteConfirm;
     } catch {
       return false;
@@ -231,13 +231,13 @@ var VibeAPI = (() => {
 
   async function saveSkipDeleteConfirm(skip) {
     try {
-      await chrome.storage.local.set({ vibeSkipDeleteConfirm: skip });
+      await ext.storage.local.set({ vibeSkipDeleteConfirm: skip });
     } catch { /* ignore */ }
   }
 
   async function getCustomShortcut() {
     try {
-      const r = await chrome.storage.local.get(['vibeCustomShortcut']);
+      const r = await ext.storage.local.get(['vibeCustomShortcut']);
       return r.vibeCustomShortcut || null;
     } catch {
       return null;
@@ -246,7 +246,7 @@ var VibeAPI = (() => {
 
   async function saveCustomShortcut(shortcut) {
     try {
-      await chrome.storage.local.set({ vibeCustomShortcut: shortcut });
+      await ext.storage.local.set({ vibeCustomShortcut: shortcut });
     } catch { /* ignore */ }
   }
 

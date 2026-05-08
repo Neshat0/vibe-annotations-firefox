@@ -4,6 +4,12 @@
   "version": "1.6.3",
   "description": "Visual annotations for localhost dev projects. Send feedback to AI coding agents like Claude & Cursor via MCP.",
   "author": "Raphael Regnier - Spellbind Creative Studio",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "vibe-annotations@spellbind.local",
+      "strict_min_version": "121.0"
+    }
+  },
   "permissions": [
     "activeTab",
     "storage",
@@ -56,6 +62,7 @@
       ],
       "all_frames": true,
       "js": [
+        "content/modules/ext-shim.js",
         "content/modules/event-bus.js",
         "content/modules/styles.js",
         "content/modules/shadow-host.js",

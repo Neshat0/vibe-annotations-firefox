@@ -106,7 +106,7 @@ var VibeToolbar = (() => {
   let viewAllPanel = null;
 
   function buildToolbar(root) {
-    const logoUrl = chrome.runtime.getURL('assets/icons/icon-hq.png');
+    const logoUrl = ext.runtime.getURL('assets/icons/icon-hq.png');
 
     toolbarEl = document.createElement('div');
     toolbarEl.className = 'vibe-toolbar';
@@ -479,7 +479,7 @@ var VibeToolbar = (() => {
     const btn = toolbarEl.querySelector('.vibe-tb-settings');
     if (btn) btn.classList.add('active');
 
-    const version = chrome.runtime.getManifest().version;
+    const version = ext.runtime.getManifest().version;
 
     settingsDropdown = document.createElement('div');
     const rect = toolbarEl.getBoundingClientRect();
@@ -1115,7 +1115,7 @@ var VibeToolbar = (() => {
     if (!confirmed) return;
 
     // Import via background script (handles storage lock + server sync)
-    await chrome.runtime.sendMessage({ action: 'importAnnotations', annotations: newAnnotations });
+    await ext.runtime.sendMessage({ action: 'importAnnotations', annotations: newAnnotations });
     // Storage listener in content.js handles re-render automatically
   }
 

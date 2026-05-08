@@ -13,7 +13,7 @@
     if (document.querySelector('[data-vibe-font]')) return;
     const style = document.createElement('style');
     style.setAttribute('data-vibe-font', 'true');
-    const fontUrl = chrome.runtime.getURL('assets/fonts/InterVariable.woff2');
+    const fontUrl = ext.runtime.getURL('assets/fonts/InterVariable.woff2');
     style.textContent = `
       @font-face {
         font-family: 'Inter';
@@ -32,7 +32,7 @@
     // 1. Shadow host + styles
     VibeShadowHost.init();
 
-    // 1b. Overlay hidden state — persisted in chrome.storage.local
+    // 1b. Overlay hidden state — persisted in ext.storage.local
     const overlayClosed = await VibeAPI.getOverlayHidden();
 
     // 1c. Show overlay if not closed (starts hidden to avoid flash)
@@ -78,7 +78,7 @@
 
   // --- Message listener (popup communication) ---
   function setupMessageListener() {
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    ext.runtime.onMessage.addListener((request, sender, sendResponse) => {
       switch (request.action) {
         case 'startAnnotationMode':
           VibeEvents.emit('inspection:start');
@@ -216,7 +216,7 @@
     VibeAPI.getCustomShortcut().then(s => { customShortcut = s; }).catch(() => {});
 
     // Listen for storage changes to update live
-    chrome.storage.onChanged.addListener((changes, ns) => {
+    ext.storage.onChanged.addListener((changes, ns) => {
       if (ns === 'local' && changes.vibeCustomShortcut) {
         customShortcut = changes.vibeCustomShortcut.newValue || null;
       }

@@ -1,6 +1,7 @@
 // API sync — health checks, bidirectional merge, individual CRUD sync
 import { isSupportedUrl } from './url-filter.js';
 import { updateAllBadges } from './badge.js';
+import { ext } from './ext.js';
 
 const API_URL = 'http://127.0.0.1:3846';
 let connected = false;
@@ -13,7 +14,7 @@ export async function checkConnection() {
     if (response.ok) {
       const data = await response.json();
       connected = true;
-      const extensionVersion = chrome.runtime.getManifest().version;
+      const extensionVersion = ext.runtime.getManifest().version;
       let versionCompatible = true;
       let compatibilityMessage = null;
       if (data.minExtensionVersion) {
@@ -47,10 +48,10 @@ export async function syncAll(annotations) {
     if (!response.ok) throw new Error(`API sync error: ${response.status}`);
     const result = await response.json();
     if (!result.success) throw new Error(result.error || 'Failed to sync annotations');
-    await chrome.storage.local.set({ apiSyncPending: false, apiLastSync: Date.now(), apiSyncCount: annotations.length });
+    await ext.storage.local.set({ apiSyncPending: false, apiLastSync: Date.now(), apiSyncCount: annotations.length });
   } catch (error) {
     console.error('Error syncing annotations to API:', error);
-    await chrome.storage.local.set({ apiSyncPending: true, apiSyncError: error.message, apiLastSync: Date.now() });
+    await ext.storage.local.set({ apiSyncPending: true, apiSyncError: error.message, apiLastSync: Date.now() });
     throw error;
   }
 }
@@ -96,7 +97,7 @@ export async function smartSync(storageLockFn) {
 
   return storageLockFn(async () => {
     try {
-      const localResult = await chrome.storage.local.get(['annotations', 'deletedAnnotationIds']);
+      const localResult = await ext.storage.local.get(['annotations', 'deletedAnnotationIds']);
       const localAnnotations = localResult.annotations || [];
       const deletedIds = new Set(localResult.deletedAnnotationIds || []);
       const localMap = new Map(localAnnotations.map(a => [a.id, a]));
@@ -120,26 +121,26 @@ export async function smartSync(storageLockFn) {
       }
 
       if (!changed && !flagsChanged) return;
-      await chrome.storage.local.set({ annotations: merged, lastServerSync: Date.now() });
+      await ext.storage.local.set({ annotations: merged, lastServerSync: Date.now() });
 
       if (changed) {
         try {
           await fetch(`${API_URL}/api/annotations/sync`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ annotations: merged }) });
           let needsUpdate = false;
           for (const a of merged) { if (!a._synced) { a._synced = true; needsUpdate = true; } }
-          if (needsUpdate) await chrome.storage.local.set({ annotations: merged });
+          if (needsUpdate) await ext.storage.local.set({ annotations: merged });
         } catch (e) { console.warn('Failed to push merged annotations to server:', e.message); }
       }
 
       for (const id of deletedIds) { if (serverMap.has(id)) deleteOne(id).catch(() => {}); }
-      await chrome.storage.local.set({ deletedAnnotationIds: [...deletedIds].filter(id => serverMap.has(id)) });
+      await ext.storage.local.set({ deletedAnnotationIds: [...deletedIds].filter(id => serverMap.has(id)) });
       console.log(`[Vibe] Sync complete — merged: ${merged.length} annotations`);
       await updateAllBadges();
 
       try {
-        const tabs = await chrome.tabs.query({});
+        const tabs = await ext.tabs.query({});
         for (const tab of tabs) {
-          if (await isSupportedUrl(tab.url)) chrome.tabs.sendMessage(tab.id, { action: 'annotationsUpdated' }).catch(() => {});
+          if (await isSupportedUrl(tab.url)) ext.tabs.sendMessage(tab.id, { action: 'annotationsUpdated' }).catch(() => {});
         }
       } catch { /* ignore */ }
     } catch (error) { console.error('Error during smart sync:', error); }
@@ -156,7 +157,7 @@ export async function fetchAnnotations(url) {
     return result.annotations || [];
   } catch (error) {
     console.error('[Background] Error getting annotations from API:', error);
-    const result = await chrome.storage.local.get(['annotations']);
+    const result = await ext.storage.local.get(['annotations']);
     const annotations = result.annotations || [];
     if (url) return annotations.filter(a => a.url === url);
     return annotations;

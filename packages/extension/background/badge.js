@@ -1,9 +1,10 @@
 // Extension icon badge management
 import { isSupportedUrl } from './url-filter.js';
+import { ext } from './ext.js';
 
 export async function updateBadge(tabId, url) {
   try {
-    const result = await chrome.storage.local.get(['annotations']);
+    const result = await ext.storage.local.get(['annotations']);
     const annotations = result.annotations || [];
     let origin;
     try { origin = new URL(url).origin; } catch { origin = null; }
@@ -13,9 +14,9 @@ export async function updateBadge(tabId, url) {
     const pendingCount = projectAnnotations.filter(a => a.status === 'pending').length;
 
     if (pendingCount > 0) {
-      await chrome.action.setBadgeText({ tabId, text: pendingCount.toString() });
-      await chrome.action.setBadgeBackgroundColor({ tabId, color: '#D03D68' });
-      await chrome.action.setTitle({ tabId, title: `Vibe Annotations - ${pendingCount} pending annotation${pendingCount === 1 ? '' : 's'}` });
+      await ext.action.setBadgeText({ tabId, text: pendingCount.toString() });
+      await ext.action.setBadgeBackgroundColor({ tabId, color: '#D03D68' });
+      await ext.action.setTitle({ tabId, title: `Vibe Annotations - ${pendingCount} pending annotation${pendingCount === 1 ? '' : 's'}` });
     } else {
       await clearBadge(tabId);
     }
@@ -26,8 +27,8 @@ export async function updateBadge(tabId, url) {
 
 export async function clearBadge(tabId) {
   try {
-    await chrome.action.setBadgeText({ tabId, text: '' });
-    await chrome.action.setTitle({ tabId, title: 'Vibe Annotations' });
+    await ext.action.setBadgeText({ tabId, text: '' });
+    await ext.action.setTitle({ tabId, title: 'Vibe Annotations' });
   } catch (error) {
     console.error('Error clearing badge:', error);
   }
@@ -35,7 +36,7 @@ export async function clearBadge(tabId) {
 
 export async function updateBadgeForUrl(url) {
   try {
-    const tabs = await chrome.tabs.query({ url });
+    const tabs = await ext.tabs.query({ url });
     for (const tab of tabs) await updateBadge(tab.id, url);
   } catch (error) {
     console.error('Error updating badge for URL:', url, error);
@@ -44,7 +45,7 @@ export async function updateBadgeForUrl(url) {
 
 export async function updateAllBadges() {
   try {
-    const tabs = await chrome.tabs.query({});
+    const tabs = await ext.tabs.query({});
     for (const tab of tabs) {
       if (await isSupportedUrl(tab.url)) await updateBadge(tab.id, tab.url);
     }

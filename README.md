@@ -1,5 +1,9 @@
 # Vibe Annotations
 
+> **⚠️ This is a personal fork.** The original project is [RaphaelRegnier/vibe-annotations](https://github.com/RaphaelRegnier/vibe-annotations) by Raphael Regnier. This fork is maintained by [@Neshat0](https://github.com/Neshat0) for personal use.
+>
+> **🦊 Firefox Developer Edition support** was added to this fork by [GitHub Copilot](https://github.com/features/copilot) because Firefox is my default browser. The changes are provided **as-is with no guarantee** — they may not be stable, may break with future Firefox updates, and have not been officially reviewed or endorsed by the original author.
+
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-6K+_users-green?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof) [![Server Package](https://img.shields.io/badge/Server-NPM-blue)](https://www.npmjs.com/package/vibe-annotations-server) [![License: PolyForm Shield](https://img.shields.io/badge/License-PolyForm%20Shield-blue)](https://polyformproject.org/licenses/shield/1.0.0)
 
 Visual feedback tool for web development. Annotate elements on your pages, make design tweaks, and share with AI coding agents or teammates.
@@ -7,6 +11,19 @@ Visual feedback tool for web development. Annotate elements on your pages, make 
 ## Get started
 
 **1.** Install the [browser extension](https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof)
+
+### Firefox Developer Edition (this fork)
+
+If you use Firefox Developer Edition, install the extension as a temporary add-on:
+
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on…**.
+3. Select `packages/extension/manifest.json` from your cloned repository.
+4. Pin the extension and open the popup from the toolbar.
+5. Open a localhost page and start annotating.
+
+Note: Temporary add-ons are removed when Firefox fully restarts, so you need to load it again next session.  
+More Firefox details and troubleshooting: [`packages/extension/FIREFOX.md`](packages/extension/FIREFOX.md).
 
 **2.** Run the setup wizard
 

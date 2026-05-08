@@ -1,4 +1,5 @@
 // URL validation and filtering for supported origins
+import { ext } from './ext.js';
 
 export function isLocalhostUrl(url) {
   if (!url) return false;
@@ -23,7 +24,7 @@ export async function isEnabledSite(url) {
   if (!url) return false;
   try {
     const origin = new URL(url).origin + '/*';
-    const result = await chrome.storage.local.get(['vibeEnabledSites']);
+    const result = await ext.storage.local.get(['vibeEnabledSites']);
     return (result.vibeEnabledSites || []).includes(origin);
   } catch { return false; }
 }

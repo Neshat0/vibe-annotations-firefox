@@ -13,10 +13,10 @@
   const updateText = document.getElementById('updateText');
   const updateDismiss = document.getElementById('updateDismiss');
   try {
-    const { updateInfo } = await chrome.storage.local.get(['updateInfo']);
+    const { updateInfo } = await ext.storage.local.get(['updateInfo']);
     if (updateInfo?.hasUpdate) {
       // Clear the NEW badge immediately on popup open
-      chrome.action.setBadgeText({ text: '' });
+      ext.action.setBadgeText({ text: '' });
 
       updateBanner.classList.remove('hidden');
       updateText.textContent = `Version ${updateInfo.currentVersion} installed`;
@@ -24,7 +24,7 @@
       updateLink.href = releaseUrl;
 
       async function dismissBanner() {
-        await chrome.storage.local.set({ updateInfo: { ...updateInfo, hasUpdate: false } });
+        await ext.storage.local.set({ updateInfo: { ...updateInfo, hasUpdate: false } });
         updateBanner.classList.add('hidden');
       }
 
@@ -34,7 +34,7 @@
   } catch { /* ignore */ }
 
   // --- Get active tab ---
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  const [tab] = await ext.tabs.query({ active: true, currentWindow: true });
   if (!tab?.url) {
     mainBtn.classList.remove('hidden');
     mainBtn.disabled = true;
@@ -67,7 +67,7 @@
   let contentScriptLoaded = false;
   let overlayVisible = false;
   try {
-    const response = await chrome.tabs.sendMessage(tab.id, { action: 'getOverlayState' });
+    const response = await ext.tabs.sendMessage(tab.id, { action: 'getOverlayState' });
     if (response?.success) {
       contentScriptLoaded = true;
       overlayVisible = response.visible;
@@ -77,8 +77,8 @@
   // --- Determine site support ---
   const isLocalhost = isLocalhostUrl(tab.url);
   const granted = !isLocalhost && (
-    await chrome.permissions.contains({ origins: [originPattern] }) ||
-    await chrome.permissions.contains({ origins: ['*://*/*'] })
+    await ext.permissions.contains({ origins: [originPattern] }) ||
+    await ext.permissions.contains({ origins: ['*://*/*'] })
   );
   const isSupported = isLocalhost || granted;
 
@@ -86,7 +86,7 @@
     // --- Supported site (localhost or user-enabled) ---
     if (granted) {
       // Re-ensure content scripts are registered (may have been lost on SW restart)
-      await chrome.runtime.sendMessage({
+      await ext.runtime.sendMessage({
         action: 'enableSite',
         originPattern,
         tabId: null
@@ -99,7 +99,7 @@
       // Content script running — show toggle
       setToggleState(overlayVisible);
       mainBtn.addEventListener('click', async () => {
-        const r = await chrome.tabs.sendMessage(tab.id, { action: 'toggleOverlay' });
+        const r = await ext.tabs.sendMessage(tab.id, { action: 'toggleOverlay' });
         setToggleState(r?.visible ?? !overlayVisible);
         window.close();
       });
@@ -107,7 +107,7 @@
       // Content script not loaded — offer reload
       mainBtn.textContent = 'Reload to activate';
       mainBtn.addEventListener('click', async () => {
-        await chrome.tabs.reload(tab.id);
+        await ext.tabs.reload(tab.id);
         setTimeout(() => window.close(), 500);
       });
     }
@@ -121,17 +121,17 @@
     mainBtn.textContent = 'Enable for this site';
 
     // Show "all sites" button unless already granted
-    const allGranted = await chrome.permissions.contains({ origins: ['*://*/*'] });
+    const allGranted = await ext.permissions.contains({ origins: ['*://*/*'] });
     if (!allGranted) allSitesBtn.classList.remove('hidden');
 
     async function onEnabled(pattern, label) {
-      const result = await chrome.storage.local.get(['vibeEnabledSites']);
+      const result = await ext.storage.local.get(['vibeEnabledSites']);
       const sites = result.vibeEnabledSites || [];
       if (!sites.includes(pattern)) {
         sites.push(pattern);
-        await chrome.storage.local.set({ vibeEnabledSites: sites });
+        await ext.storage.local.set({ vibeEnabledSites: sites });
       }
-      await chrome.runtime.sendMessage({
+      await ext.runtime.sendMessage({
         action: 'enableSite',
         originPattern: pattern,
         tabId: tab.id
@@ -147,7 +147,7 @@
 
     mainBtn.addEventListener('click', async () => {
       try {
-        const ok = await chrome.permissions.request({ origins: [originPattern] });
+        const ok = await ext.permissions.request({ origins: [originPattern] });
         if (ok) await onEnabled(originPattern, 'Site enabled!');
       } catch (err) {
         console.error('Permission request failed:', err);
@@ -158,7 +158,7 @@
 
     allSitesBtn.addEventListener('click', async () => {
       try {
-        const ok = await chrome.permissions.request({ origins: ['*://*/*'] });
+        const ok = await ext.permissions.request({ origins: ['*://*/*'] });
         if (ok) await onEnabled(originPattern, 'All sites enabled!');
       } catch (err) {
         console.error('Permission request failed:', err);

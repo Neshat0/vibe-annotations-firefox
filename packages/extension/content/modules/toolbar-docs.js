@@ -37,7 +37,7 @@ var VibeToolbarDocs = (() => {
     const body = dropdown.querySelector('.vibe-settings-body');
     if (!header || !body) return;
 
-    const version = chrome.runtime.getManifest().version;
+    const version = ext.runtime.getManifest().version;
 
     header.innerHTML = `
       <button class="vibe-guide-back-btn" type="button" style="display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:var(--v-text-secondary);font-family:var(--v-font);font-size:13px;padding:0;">
