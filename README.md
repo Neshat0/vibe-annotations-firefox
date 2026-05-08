@@ -1,5 +1,9 @@
 # Vibe Annotations
 
+> **⚠️ This is a personal fork.** The original project is [RaphaelRegnier/vibe-annotations](https://github.com/RaphaelRegnier/vibe-annotations) by Raphael Regnier. This fork is maintained by [@Neshat0](https://github.com/Neshat0) for personal use.
+>
+> **🦊 Firefox Developer Edition support** was added to this fork by [GitHub Copilot](https://github.com/features/copilot) because Firefox is my default browser. The changes are provided **as-is with no guarantee** — they may not be stable, may break with future Firefox updates, and have not been officially reviewed or endorsed by the original author.
+
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-6K+_users-green?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof) [![Server Package](https://img.shields.io/badge/Server-NPM-blue)](https://www.npmjs.com/package/vibe-annotations-server) [![License: PolyForm Shield](https://img.shields.io/badge/License-PolyForm%20Shield-blue)](https://polyformproject.org/licenses/shield/1.0.0)
 
 Visual feedback tool for web development. Annotate elements on your pages, make design tweaks, and share with AI coding agents or teammates.
