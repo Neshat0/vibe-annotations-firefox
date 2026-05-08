@@ -33,7 +33,7 @@ export default function Navbar() {
           {/* GitHub Icon and CTA Button - Always visible */}
           <div className="flex items-center gap-4 justify-self-end px-2 py-2">
             <a 
-              href="https://github.com/RaphaelRegnier/vibe-annotations" 
+              href="https://github.com/Neshat0/vibe-annotations-firefox" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-gray-900 transition-colors"
@@ -44,7 +44,7 @@ export default function Navbar() {
               </svg>
             </a>
             <a 
-              href="https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof?utm_source=item-share-cb" 
+              href="/docs/installation" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hidden md:block bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-3 py-2 rounded-xl text-[15px] font-medium transition-all"

@@ -495,7 +495,7 @@ var VibeToolbar = (() => {
       <div class="vibe-settings-header">
         <div>
           <span class="vibe-settings-title">${escapeHTML(route)}</span>
-          <a href="https://github.com/RaphaelRegnier/vibe-annotations/releases/tag/v${escapeHTML(version)}" target="_blank" rel="noopener" class="vibe-settings-version">v${escapeHTML(version)}</a>
+          <a href="https://github.com/Neshat0/vibe-annotations-firefox/releases/tag/v${escapeHTML(version)}" target="_blank" rel="noopener" class="vibe-settings-version">v${escapeHTML(version)}</a>
         </div>
       </div>
       <div class="vibe-settings-body">

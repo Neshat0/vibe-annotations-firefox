@@ -51,7 +51,7 @@ Unsure where to begin contributing? You can start by looking through these issue
 
 ```
 vibe-annotations/
-├── extension/          # Chrome extension source code
+├── extension/          # Firefox extension source code
 ├── annotations-server/ # MCP server (npm package)
 ├── docs/              # Documentation
 └── README.md          # Main documentation
@@ -59,11 +59,10 @@ vibe-annotations/
 
 ### Extension Development
 
-1. Load the extension in Chrome:
-   - Open `chrome://extensions/`
-   - Enable Developer mode
-   - Click "Load unpacked"
-   - Select the `extension/` directory
+1. Load the extension in Firefox Developer Edition:
+   - Open `about:debugging#/runtime/this-firefox`
+   - Click "Load Temporary Add-on…"
+   - Select `packages/extension/manifest.json`
 
 2. Make your changes
 3. Reload the extension to test
@@ -93,7 +92,7 @@ vibe-annotations/
 
 ### Extension Publishing
 
-The Chrome extension is published to the Chrome Web Store by maintainers only.
+The Firefox extension is distributed as a temporary add-on in this fork. If it is ever published to Firefox Add-ons, maintainers will handle it.
 
 ### Server Publishing
 

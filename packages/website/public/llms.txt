@@ -21,7 +21,7 @@
 
 ## Quick Start
 
-1. Install browser extension from Chrome Web Store
+1. Install the Firefox extension (temporary add-on) — see the installation guide
 2. Run: npx vibe-annotations-server init (interactive wizard — installs server, starts it, configures your AI agent across Claude Code, Cursor, Windsurf, Codex, OpenClaw, VS Code)
 
 Manual install (alternative):
@@ -31,7 +31,7 @@ Manual install (alternative):
 
 ## Links
 
-- GitHub: https://github.com/RaphaelRegnier/vibe-annotations
-- Chrome Web Store: https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof
+- GitHub: https://github.com/Neshat0/vibe-annotations-firefox
+- Upstream: https://github.com/RaphaelRegnier/vibe-annotations
+- Firefox setup: https://vibe-annotations.com/docs/installation
 - NPM Server: https://www.npmjs.com/package/vibe-annotations-server
-

@@ -102,7 +102,7 @@ export default function RootLayout({
               "url": "https://vibe-annotations.com",
               "applicationCategory": "DeveloperApplication",
               "operatingSystem": "Web Browser",
-              "browserRequirements": "Chrome, Edge, Brave, Opera, Vivaldi, Arc",
+              "browserRequirements": "Firefox Developer Edition, Firefox Nightly (MV3 enabled)",
               "offers": {
                 "@type": "Offer",
                 "price": "0",

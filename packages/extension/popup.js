@@ -20,7 +20,7 @@
 
       updateBanner.classList.remove('hidden');
       updateText.textContent = `Version ${updateInfo.currentVersion} installed`;
-      const releaseUrl = updateInfo.releaseUrl || 'https://github.com/RaphaelRegnier/vibe-annotations/releases';
+      const releaseUrl = updateInfo.releaseUrl || 'https://github.com/Neshat0/vibe-annotations-firefox/releases';
       updateLink.href = releaseUrl;
 
       async function dismissBanner() {

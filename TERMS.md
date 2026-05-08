@@ -4,7 +4,7 @@
 
 ## 1. Acceptance of Terms
 
-By installing, accessing, or using Vibe Annotations (the "Software"), including the Chrome browser extension and the vibe-annotations-server npm package, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, do not use the Software.
+By installing, accessing, or using Vibe Annotations (the "Software"), including the Firefox browser extension and the vibe-annotations-server npm package, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, do not use the Software.
 
 ## 2. License Grant
 
@@ -22,7 +22,7 @@ Vibe Annotations is a developer tool that:
 
 ### 4.1 Data Storage
 - All annotation data is stored locally on your machine in `~/.vibe-annotations/`
-- The Chrome extension uses Chrome Storage API for local data persistence
+- The Firefox extension uses the WebExtension Storage API (`browser.storage.local`) for local data persistence
 - No data is transmitted to external servers or third parties
 
 ### 4.2 Network Communications
@@ -31,7 +31,7 @@ Vibe Annotations is a developer tool that:
 - No user data, annotations, or code is transmitted externally
 
 ### 4.3 Permissions
-The Chrome extension requires minimal permissions:
+The Firefox extension requires minimal permissions:
 - `activeTab`: To annotate the current webpage
 - `storage`: To persist annotations locally
 - `scripting`: To inject annotation interface
@@ -80,7 +80,7 @@ You remain fully responsible for:
 ## 9. Updates and Modifications
 
 ### 9.1 Software Updates
-- Chrome extension updates are distributed via Chrome Web Store
+- Firefox extension updates are distributed via Firefox Add-ons or manual reloads for temporary add-ons
 - Server package updates are distributed via NPM
 - Update notifications are provided but updates are optional
 - We reserve the right to modify or discontinue the Software
@@ -116,7 +116,7 @@ If any provision of these Terms is found to be unenforceable, the remaining prov
 ## 15. Contact Information
 
 For questions about these Terms and Conditions:
-- GitHub Issues: https://github.com/RaphaelRegnier/vibe-annotations/issues
+- GitHub Issues: https://github.com/Neshat0/vibe-annotations-firefox/issues
 - Author: Raphael Regnier - Spellbind Creative Studio
 
 ## 16. Acknowledgment

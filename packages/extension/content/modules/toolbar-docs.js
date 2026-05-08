@@ -84,11 +84,11 @@ var VibeToolbarDocs = (() => {
         <span style="margin-left:auto;color:var(--v-text-secondary);">${ICONS.chevronRight}</span>
       </button>
       <div class="vibe-settings-separator"></div>
-      <a href="https://github.com/RaphaelRegnier/vibe-annotations" target="_blank" rel="noopener" class="vibe-settings-link">
+      <a href="https://github.com/Neshat0/vibe-annotations-firefox" target="_blank" rel="noopener" class="vibe-settings-link">
         ${ICONS.github}
         <span>Contribute to Vibe Annotations</span>
       </a>
-      <a href="https://github.com/RaphaelRegnier/vibe-annotations/releases/tag/v${escapeHTML(version)}" target="_blank" rel="noopener" class="vibe-settings-link">
+      <a href="https://github.com/Neshat0/vibe-annotations-firefox/releases/tag/v${escapeHTML(version)}" target="_blank" rel="noopener" class="vibe-settings-link">
         ${ICONS.newspaper}
         <span>Release notes</span>
       </a>
@@ -390,7 +390,7 @@ var VibeToolbarDocs = (() => {
           </div>
           <div class="vibe-guide-section">
             <div class="vibe-guide-label">Compatible agents</div>
-            <p class="vibe-guide-text"><strong>Claude Chrome extension</strong> has direct page access and can call the API from its javascript tool.</p>
+            <p class="vibe-guide-text"><strong>Claude Firefox extension</strong> has direct page access and can call the API from its javascript tool.</p>
             <p class="vibe-guide-text"><strong>OpenClaw</strong> uses CDP evaluate to run JS on the page.</p>
             <p class="vibe-guide-text"><strong>Claude Code, Cursor, Windsurf</strong> can access the page via a DevTools MCP server or Playwright.</p>
           </div>
@@ -404,7 +404,7 @@ var VibeToolbarDocs = (() => {
           </div>
           <div class="vibe-guide-section">
             <div class="vibe-guide-label">Requirement</div>
-            <p class="vibe-guide-text">The extension must be active on the page for the bridge API to be available. This works best when the agent uses <strong>your browser</strong> (Claude Chrome, DevTools MCP), since the extension is already installed.</p>
+            <p class="vibe-guide-text">The extension must be active on the page for the bridge API to be available. This works best when the agent uses <strong>your browser</strong> (Claude Firefox, DevTools MCP), since the extension is already installed.</p>
             <p class="vibe-guide-text">Agents that launch their own browser (Playwright, Puppeteer) won't have the extension loaded by default. This can be configured by passing the extension path at launch, but requires some local setup.</p>
           </div>
           <div class="vibe-guide-section">

@@ -1,11 +1,11 @@
-# Chrome Extension
+# Firefox Extension
 
-Vanilla JS Chrome MV3 extension. No build step — load the `packages/extension/` directory as unpacked in Chrome.
+Vanilla JS Firefox WebExtension (MV3). No build step — load the `packages/extension/` directory as a temporary add-on in Firefox Developer Edition.
 
 ## Architecture
 
 ```
-Chrome Extension → HTTP API → vibe-annotations-server (port 3846) → MCP ← AI Coding Agents
+Firefox Extension → HTTP API → vibe-annotations-server (port 3846) → MCP ← AI Coding Agents
 ```
 
 ### Key directories
@@ -74,4 +74,4 @@ Tools: `read_annotations`, `delete_annotation`, `watch_annotations`, `get_projec
 
 ## Testing
 
-Load unpacked in Chrome, navigate to any localhost page. No automated tests — all manual.
+Load as a temporary add-on in Firefox Developer Edition, navigate to any localhost page. No automated tests — all manual.
