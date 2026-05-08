@@ -18,7 +18,7 @@ If you use Firefox Developer Edition, install the extension as a temporary add-o
 
 1. Open `about:debugging#/runtime/this-firefox`.
 2. Click **Load Temporary Add-on…**.
-3. Select `packages/extension/manifest.json` from your cloned repository.
+3. Select `packages/extension/manifest.firefox.json` from your cloned repository.
 4. Pin the extension and open the popup from the toolbar.
 5. Open a localhost page and start annotating.
 

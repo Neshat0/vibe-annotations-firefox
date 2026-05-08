@@ -4,12 +4,12 @@
 
 1. Open `about:debugging#/runtime/this-firefox` in Firefox Developer Edition.
 2. Click **Load Temporary Add-on…**.
-3. Select `packages/extension/manifest.json` from your cloned repository.
+3. Select `packages/extension/manifest.firefox.json` from your cloned repository.
 4. Pin the extension and open the popup from the toolbar.
 
-## Troubleshooting: background service worker disabled
+## MV3 service worker (optional)
 
-If loading the add-on shows `background.service_worker is currently disabled. Add background.scripts`, enable MV3 service workers:
+If you want to test the MV3 manifest (`manifest.json`) instead, enable MV3 service workers:
 
 1. Open `about:config`.
 2. Set `extensions.manifestV3.enabled` to `true`.

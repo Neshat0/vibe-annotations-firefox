@@ -381,14 +381,40 @@ class VibeAnnotationsBackground {
 
   async injectEnabledSiteScripts(tabId, url) {
     if (this._injectedTabUrls.get(tabId) === url) return;
-    if (!ext.scripting?.executeScript) return;
     try {
-      await ext.scripting.executeScript({ target: { tabId }, files: CONTENT_SCRIPT_FILES });
-      try {
-        await ext.scripting.executeScript({ target: { tabId }, files: ['content/bridge-api.js'], world: 'MAIN' });
-      } catch (worldError) {
-        console.warn('MAIN world bridge injection failed, retrying isolated world:', worldError);
-        await ext.scripting.executeScript({ target: { tabId }, files: ['content/bridge-api.js'] });
+      if (ext.scripting?.executeScript) {
+        await ext.scripting.executeScript({ target: { tabId }, files: CONTENT_SCRIPT_FILES });
+        try {
+          await ext.scripting.executeScript({ target: { tabId }, files: ['content/bridge-api.js'], world: 'MAIN' });
+        } catch (worldError) {
+          console.warn('MAIN world bridge injection failed, retrying isolated world:', worldError);
+          await ext.scripting.executeScript({ target: { tabId }, files: ['content/bridge-api.js'] });
+        }
+      } else if (ext.tabs?.executeScript) {
+        for (const file of CONTENT_SCRIPT_FILES) {
+          await ext.tabs.executeScript(tabId, { file, allFrames: true });
+        }
+        const bridgeUrl = ext.runtime.getURL('content/bridge-api.js');
+        try {
+          await ext.tabs.executeScript(tabId, {
+            allFrames: true,
+            code: `
+              (function() {
+                if (document.getElementById('vibe-bridge-api')) return;
+                const script = document.createElement('script');
+                script.id = 'vibe-bridge-api';
+                script.src = ${JSON.stringify(bridgeUrl)};
+                script.type = 'text/javascript';
+                (document.head || document.documentElement).appendChild(script);
+              })();
+            `
+          });
+        } catch (worldError) {
+          console.warn('MAIN world bridge injection failed, retrying isolated world:', worldError);
+          await ext.tabs.executeScript(tabId, { file: 'content/bridge-api.js', allFrames: true });
+        }
+      } else {
+        return;
       }
       this._injectedTabUrls.set(tabId, url);
     } catch (err) {
