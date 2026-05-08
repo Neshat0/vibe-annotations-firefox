@@ -4,7 +4,7 @@
 
 1. Open `about:debugging#/runtime/this-firefox` in Firefox Developer Edition.
 2. Click **Load Temporary Add-on…**.
-3. Select `/home/runner/work/vibe-annotations/vibe-annotations/packages/extension/manifest.json`.
+3. Select `packages/extension/manifest.json` from your cloned repository.
 4. Pin the extension and open the popup from the toolbar.
 
 ## Permissions and behavior notes
@@ -26,6 +26,6 @@
 From the repo root:
 
 ```bash
-cd /home/runner/work/vibe-annotations/vibe-annotations/packages/extension
+cd packages/extension
 zip -r /tmp/vibe-annotations-firefox.zip . -x "*.DS_Store" -x "__MACOSX/*"
 ```
