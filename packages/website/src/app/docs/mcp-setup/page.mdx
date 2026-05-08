@@ -4,21 +4,17 @@ export const metadata = { title: 'MCP Setup' }
 
 Connect your AI coding agent to the Vibe Annotations server so it can read, watch, and resolve annotations automatically.
 
-**Shortcut:** `npx vibe-annotations-server init` configures the agents below interactively in one step. Keep reading if you'd rather set it up manually.
+**Shortcut:** `npx vibe-annotations-server init` configures MCP in one step.
 
-**Prerequisite (manual setup):** The server must be running. Run `vibe-annotations-server start` first.
-
-## Claude Code
-
-Run once from any directory — `--scope user` configures it globally across all projects.
+**Prerequisite (manual setup):** Start server first.
 
 ```bash
-claude mcp add --scope user --transport http vibe-annotations http://127.0.0.1:3846/mcp
+vibe-annotations-server start
 ```
 
-## Cursor
+## Generic MCP Configuration
 
-Open Cursor Settings, go to Tools & Integrations, click "+ Add new global MCP server", and add:
+Add this entry to your MCP client config file (JSON shape shown below). If your client uses TOML/YAML, use equivalent fields.
 
 ```json
 {
@@ -30,55 +26,11 @@ Open Cursor Settings, go to Tools & Integrations, click "+ Add new global MCP se
 }
 ```
 
-## Windsurf
-
-Navigate to Settings, then Advanced Settings, scroll to the Cascade section, and add:
-
-```json
-{
-  "mcpServers": {
-    "vibe-annotations": {
-      "serverUrl": "http://127.0.0.1:3846/mcp"
-    }
-  }
-}
-```
-
-## Codex
-
-Add to `~/.codex/config.toml`:
+Alternative TOML format:
 
 ```toml
 [mcp_servers.vibe-annotations]
 url = "http://127.0.0.1:3846/mcp"
-```
-
-## OpenClaw
-
-Add to `~/.openclaw/openclaw.json`:
-
-```json
-{
-  "mcpServers": {
-    "vibe-annotations": {
-      "url": "http://127.0.0.1:3846/mcp"
-    }
-  }
-}
-```
-
-## VS Code
-
-Install an AI extension that supports MCP, then add to your MCP settings:
-
-```json
-{
-  "mcpServers": {
-    "vibe-annotations": {
-      "url": "http://127.0.0.1:3846/mcp"
-    }
-  }
-}
 ```
 
 ## MCP Tools
@@ -96,4 +48,4 @@ The server exposes these tools to connected agents:
 
 ## SSE Transport (legacy)
 
-If you experience connection issues with the HTTP transport, you can use the SSE endpoint instead. Replace `/mcp` with `/sse` in any of the configurations above.
+If your client cannot use HTTP MCP, use SSE by replacing `/mcp` with `/sse`.

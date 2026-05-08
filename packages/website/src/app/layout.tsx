@@ -28,8 +28,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://vibe-annotations.com'),
   title: 'Vibe Annotations - Visual Annotation Tool for AI Coding Agents',
-  description: 'Browser extension to add and group visual feedbacks to your applications while developing with Claude Code, Cursor, Windsurf, GitHub Copilot or other AI coding agents.',
-  keywords: 'AI annotations, coding agents, Claude Code, Cursor, GitHub Copilot, Windsurf, visual feedback, developer tools, MCP, browser extension, local development, UI feedback, code automation',
+  description: 'Browser extension to add and group visual feedback for localhost development with AI coding agents.',
+  keywords: 'AI annotations, coding agents, visual feedback, developer tools, MCP, browser extension, local development, UI feedback, code automation',
   authors: [{ name: 'Vibe Annotations' }],
   alternates: {
     canonical: 'https://vibe-annotations.com',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Vibe Annotations - Visual Annotation Tool for AI Coding Agents',
-    description: 'Browser extension to add and group visual feedbacks to your applications while developing with Claude Code, Cursor, Windsurf, GitHub Copilot or other AI coding agents.',
+    description: 'Browser extension to add and group visual feedback for localhost development with AI coding agents.',
     url: 'https://vibe-annotations.com',
     siteName: 'Vibe Annotations',
     images: [
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Vibe Annotations - Visual Annotation Tool for AI Coding Agents',
-    description: 'Browser extension to add and group visual feedbacks to your applications while developing with Claude Code, Cursor, Windsurf, GitHub Copilot or other AI coding agents.',
+    description: 'Browser extension to add and group visual feedback for localhost development with AI coding agents.',
     images: ['/og-image.jpg'],
     site: '@Raph_Regnier',
     creator: '@Raph_Regnier',
@@ -98,7 +98,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               "name": "Vibe Annotations",
-              "description": "Browser extension to add and group visual feedbacks to your applications while developing with Claude Code, Cursor, Windsurf, GitHub Copilot or other AI coding agents.",
+              "description": "Browser extension to add and group visual feedback for localhost development with AI coding agents.",
               "url": "https://vibe-annotations.com",
               "applicationCategory": "DeveloperApplication",
               "operatingSystem": "Web Browser",
@@ -116,11 +116,7 @@ export default function RootLayout({
               "keywords": [
                 "AI annotations",
                 "coding agents",
-                "Claude Code",
-                "Cursor",
-                "GitHub Copilot", 
-                "Windsurf",
-                "visual feedback",
+                                "visual feedback",
                 "developer tools",
                 "MCP",
                 "browser extension",

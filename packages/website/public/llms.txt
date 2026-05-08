@@ -22,12 +22,12 @@
 ## Quick Start
 
 1. Install the Firefox extension (temporary add-on) — see the installation guide
-2. Run: npx vibe-annotations-server init (interactive wizard — installs server, starts it, configures your AI agent across Claude Code, Cursor, Windsurf, Codex, OpenClaw, VS Code)
+2. Run: npx vibe-annotations-server init (interactive wizard — installs server, starts it, configures MCP for your AI agent)
 
 Manual install (alternative):
 - npm install -g vibe-annotations-server
 - vibe-annotations-server start
-- claude mcp add --scope user --transport http vibe-annotations http://127.0.0.1:3846/mcp
+- Add this MCP entry: {"mcpServers":{"vibe-annotations":{"url":"http://127.0.0.1:3846/mcp"}}}
 
 ## Links
 

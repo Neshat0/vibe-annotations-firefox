@@ -1,8 +1,10 @@
 # Vibe Annotations Firefox
 
-> **⚠️ This is a personal fork.** The original project is [RaphaelRegnier/vibe-annotations](https://github.com/RaphaelRegnier/vibe-annotations) by Raphael Regnier. This fork lives at **Neshat0/vibe-annotations-firefox** and is maintained by [@Neshat0](https://github.com/Neshat0) for personal use.
+> **⚠️ Fork attribution:** This repository is copied/forked from [RaphaelRegnier/vibe-annotations](https://github.com/RaphaelRegnier/vibe-annotations) by Raphael Regnier.
 >
-> **🦊 Firefox Developer Edition support** was added to this fork by [GitHub Copilot](https://github.com/features/copilot) and with the help of ChatGPT because Firefox is my default browser. The changes are provided **as-is with no guarantee** — they may not be stable, may break with future Firefox updates, and have not been officially reviewed or endorsed by the original author.
+> **All core credit goes to the upstream project.** I do not claim ownership or innovation beyond adapting the fork for Firefox workflows.
+>
+> **🦊 Firefox adaptation note:** Firefox support in this fork was put together by vibe-coding with [GitHub Copilot](https://github.com/features/copilot), ChatGPT, and Codex. The result is provided **as-is with no guarantee** and is not officially reviewed or endorsed by the original author.
 
 [![Firefox Developer Edition](https://img.shields.io/badge/Firefox_Developer_Edition-Temporary_Add--on-orange?logo=firefoxbrowser&logoColor=white)](packages/extension/FIREFOX.md) [![Server Package](https://img.shields.io/badge/Server-NPM-blue)](https://www.npmjs.com/package/vibe-annotations-server) [![License: PolyForm Shield](https://img.shields.io/badge/License-PolyForm%20Shield-blue)](https://polyformproject.org/licenses/shield/1.0.0)
 
@@ -31,7 +33,7 @@ More Firefox details and troubleshooting (including MV3 settings): [`packages/ex
 npx vibe-annotations-server init
 ```
 
-One interactive command installs the global server, starts it in the background, and configures your AI coding agent (Claude Code, Cursor, Windsurf, Codex, OpenClaw, VS Code). Prefer manual? See [Installation](https://vibe-annotations.com/docs/installation).
+One interactive command installs the global server, starts it in the background, and configures your AI coding agent. Prefer manual? See [Installation](https://vibe-annotations.com/docs/installation).
 
 **3.** Open a localhost page, click **Annotate**. You can annotate multiple pages on your web app. Then:
 

@@ -270,7 +270,7 @@ export default function Home() {
                 
                 {/* CTA Button */}
                 <motion.a 
-                  href="https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof?utm_source=item-share-cb" 
+                  href="https://github.com/Neshat0/vibe-annotations-firefox/blob/main/packages/extension/FIREFOX.md" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white pl-3 pr-4 py-2.5 rounded-xl text-base font-medium shadow-lg hover:shadow-xl"
@@ -316,7 +316,7 @@ export default function Home() {
                           <Image alt="" src="/4e8d20ceb09d50bb803dc9431880f21ec356a774.svg" width={27} height={22} className="block max-w-none size-full" />
                         </div>
                         <div className="flex flex-col font-semibold justify-center leading-[0] not-italic relative shrink-0 text-black text-[15.523px] text-nowrap">
-                          <p className="block leading-[1.46] whitespace-pre">Copilot</p>
+                          <p className="block leading-[1.46] whitespace-pre">Agent</p>
                         </div>
                       </div>
                     </div>
@@ -658,7 +658,7 @@ export default function Home() {
                       gap: '3%'
                     }}
                   >
-                    {/* Claude Logo */}
+                    {/* Agent Logo */}
                     <motion.div 
                       className="bg-center bg-contain bg-no-repeat flex-1 min-w-0"
                       style={{ 
@@ -719,7 +719,7 @@ export default function Home() {
               <div className="w-full lg:w-1/2">
                 <h3 className="text-[24px] md:text-[34px] font-[550] text-gray-900 mb-10 tracking-tight">3. AI Implements All</h3>
                 <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                  Send everything to Claude Code, Cursor, GitHub Copilot, or Windsurf. Watch as every annotation becomes working code.
+                  Send annotations to your AI coding agent and turn feedback into working code.
                 </p>
               </div>
             </motion.div>
@@ -742,7 +742,7 @@ export default function Home() {
                   </h2>
                 </div>
                 <a 
-                  href="https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof?utm_source=item-share-cb" 
+                  href="https://github.com/Neshat0/vibe-annotations-firefox/blob/main/packages/extension/FIREFOX.md" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-2.5 rounded-xl font-medium transition-all"
@@ -817,7 +817,7 @@ export default function Home() {
                   <div className="flex flex-col gap-4 px-2">
                     <h3 className="text-lg font-medium text-black tracking-tight">Universal AI Support</h3>
                     <p className="text-base text-black leading-relaxed">
-                      Works with Claude Code, Cursor, Windsurf, and any MCP-compatible coding agent. Just copy-paste the given lines on installation.
+                      Works with any MCP-compatible AI coding agent. Just copy-paste the given lines on installation.
                     </p>
                   </div>
                 </div>
@@ -990,22 +990,22 @@ export default function Home() {
       <section className="sr-only" aria-hidden="true">
         <h2>AI Coding Agent Annotation Tool</h2>
         <p>
-          Vibe Annotations is a visual annotation tool designed specifically for AI coding agents including Claude Code, Cursor, GitHub Copilot, and Windsurf. 
+          Vibe Annotations is a visual annotation tool designed specifically for AI coding agents for AI coding agents. 
           This browser extension allows developers to drop visual annotations directly on website elements and automatically send them to AI coding agents for implementation.
         </p>
         
         <h3>How to Use Vibe Annotations with AI Coding Agents</h3>
         <p>
-          Install the Vibe Annotations browser extension, start the local MCP server, and configure your AI coding agent (Claude Code, Cursor, GitHub Copilot, or Windsurf) 
+          Install the Vibe Annotations browser extension, start the local MCP server, and configure your AI coding agent (your preferred AI coding agent) 
           to receive annotations. Click on any website element to add visual feedback, then let your AI coding agent implement all changes automatically.
         </p>
         
         <h3>Supported AI Coding Agents</h3>
         <ul>
-          <li>Claude Code - Anthropic&apos;s AI coding assistant</li>
-          <li>Cursor - AI-powered code editor</li>
-          <li>GitHub Copilot - Microsoft&apos;s AI pair programmer</li>
-          <li>Windsurf - AI coding agent platform</li>
+          <li>Any MCP-compatible AI coding agent</li>
+          <li>Your editor/IDE with MCP support</li>
+          <li>Terminal or editor-based agent workflow</li>
+          <li>Custom MCP client integration</li>
         </ul>
         
         <h3>Key Features for AI Coding Workflows</h3>

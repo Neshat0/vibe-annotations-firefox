@@ -150,15 +150,15 @@ var VibeToolbarDocs = (() => {
           </div>
           <p class="vibe-guide-text" style="margin-top:8px;">Then connect your agent:</p>
           <div class="vibe-guide-tabs">
-            <button class="vibe-guide-tab active" data-tab="claude">Claude Code</button>
-            <button class="vibe-guide-tab" data-tab="cursor">Cursor</button>
-            <button class="vibe-guide-tab" data-tab="windsurf">Windsurf</button>
+            <button class="vibe-guide-tab active" data-tab="jsona">JSON config</button>
+            <button class="vibe-guide-tab" data-tab="cursor">JSON config</button>
+            <button class="vibe-guide-tab" data-tab="windsurf">Server URL config</button>
             <button class="vibe-guide-tab" data-tab="codex">Codex</button>
-            <button class="vibe-guide-tab" data-tab="openclaw">OpenClaw</button>
+            <button class="vibe-guide-tab" data-tab="openclaw">JSON config</button>
           </div>
-          <div class="vibe-guide-panel active" data-panel="claude">
-            <div class="vibe-guide-cmd" data-cmd="claude mcp add --scope user --transport http vibe-annotations http://127.0.0.1:3846/mcp">
-              <code>claude mcp add --scope user --transport http vibe-annotations http://127.0.0.1:3846/mcp</code>
+          <div class="vibe-guide-panel active" data-panel="jsona">
+            <div class="vibe-guide-cmd" data-cmd='{"mcpServers":{"vibe-annotations":{"url":"http://127.0.0.1:3846/mcp"}}}'>
+              <code>{"mcpServers":{"vibe-annotations":{"url":"http://127.0.0.1:3846/mcp"}}}</code>
               <button class="vibe-guide-copy" type="button">${ICONS.clipboard}</button>
             </div>
           </div>
@@ -170,7 +170,7 @@ var VibeToolbarDocs = (() => {
             </div>
           </div>
           <div class="vibe-guide-panel" data-panel="windsurf">
-            <p class="vibe-guide-text">Add to Windsurf MCP settings:</p>
+            <p class="vibe-guide-text">Add to your MCP settings:</p>
             <div class="vibe-guide-cmd" data-cmd='{"mcpServers":{"vibe-annotations":{"serverUrl":"http://127.0.0.1:3846/mcp"}}}'>
               <code>{"mcpServers":{"vibe-annotations":{"serverUrl":"http://127.0.0.1:3846/mcp"}}}</code>
               <button class="vibe-guide-copy" type="button">${ICONS.clipboard}</button>
@@ -229,15 +229,15 @@ var VibeToolbarDocs = (() => {
           <div class="vibe-guide-section">
             <div class="vibe-guide-label">2. Connect your agent <span style="font-weight:400;color:var(--v-text-secondary);">(skip if you used init)</span></div>
             <div class="vibe-guide-tabs">
-              <button class="vibe-guide-tab active" data-tab="claude">Claude Code</button>
-              <button class="vibe-guide-tab" data-tab="cursor">Cursor</button>
-              <button class="vibe-guide-tab" data-tab="windsurf">Windsurf</button>
+              <button class="vibe-guide-tab active" data-tab="jsona">JSON config</button>
+              <button class="vibe-guide-tab" data-tab="cursor">JSON config</button>
+              <button class="vibe-guide-tab" data-tab="windsurf">Server URL config</button>
               <button class="vibe-guide-tab" data-tab="codex">Codex</button>
-              <button class="vibe-guide-tab" data-tab="openclaw">OpenClaw</button>
+              <button class="vibe-guide-tab" data-tab="openclaw">JSON config</button>
             </div>
-            <div class="vibe-guide-panel active" data-panel="claude">
-              <div class="vibe-guide-cmd" data-cmd="claude mcp add --scope user --transport http vibe-annotations http://127.0.0.1:3846/mcp">
-                <code>claude mcp add --scope user --transport http vibe-annotations http://127.0.0.1:3846/mcp</code>
+            <div class="vibe-guide-panel active" data-panel="jsona">
+              <div class="vibe-guide-cmd" data-cmd='{"mcpServers":{"vibe-annotations":{"url":"http://127.0.0.1:3846/mcp"}}}'>
+                <code>{"mcpServers":{"vibe-annotations":{"url":"http://127.0.0.1:3846/mcp"}}}</code>
                 <button class="vibe-guide-copy" type="button">${ICONS.clipboard}</button>
               </div>
             </div>
@@ -249,7 +249,7 @@ var VibeToolbarDocs = (() => {
               </div>
             </div>
             <div class="vibe-guide-panel" data-panel="windsurf">
-              <p class="vibe-guide-text">Add to Windsurf MCP settings:</p>
+              <p class="vibe-guide-text">Add to your MCP settings:</p>
               <div class="vibe-guide-cmd" data-cmd='{"mcpServers":{"vibe-annotations":{"serverUrl":"http://127.0.0.1:3846/mcp"}}}'>
                 <code>{"mcpServers":{"vibe-annotations":{"serverUrl":"http://127.0.0.1:3846/mcp"}}}</code>
                 <button class="vibe-guide-copy" type="button">${ICONS.clipboard}</button>
@@ -292,7 +292,7 @@ var VibeToolbarDocs = (() => {
             <div class="vibe-guide-label">Workflow</div>
             <p class="vibe-guide-text">1. Annotate elements on the page (comments, CSS tweaks, text changes)</p>
             <p class="vibe-guide-text">2. Click <strong>Copy</strong> in the toolbar</p>
-            <p class="vibe-guide-text">3. Paste into any AI chat (Claude, ChatGPT, Cursor...) and ask the agent to implement the changes</p>
+            <p class="vibe-guide-text">3. Paste into any AI chat and ask the agent to implement the changes</p>
           </div>
           <div class="vibe-guide-section">
             <div class="vibe-guide-label">Tips</div>
@@ -324,9 +324,9 @@ var VibeToolbarDocs = (() => {
               <code>vibe-annotations-server start</code>
               <button class="vibe-guide-copy" type="button">${ICONS.clipboard}</button>
             </div>
-            <p class="vibe-guide-text" style="margin-top:8px;">Then connect your agent (e.g. Claude Code):</p>
-            <div class="vibe-guide-cmd" data-cmd="claude mcp add --scope user --transport http vibe-annotations http://127.0.0.1:3846/mcp">
-              <code>claude mcp add --scope user --transport http vibe-annotations http://127.0.0.1:3846/mcp</code>
+            <p class="vibe-guide-text" style="margin-top:8px;">Then connect your agent:</p>
+            <div class="vibe-guide-cmd" data-cmd='{"mcpServers":{"vibe-annotations":{"url":"http://127.0.0.1:3846/mcp"}}}'>
+              <code>{"mcpServers":{"vibe-annotations":{"url":"http://127.0.0.1:3846/mcp"}}}</code>
               <button class="vibe-guide-copy" type="button">${ICONS.clipboard}</button>
             </div>
           </div>
@@ -390,9 +390,9 @@ var VibeToolbarDocs = (() => {
           </div>
           <div class="vibe-guide-section">
             <div class="vibe-guide-label">Compatible agents</div>
-            <p class="vibe-guide-text"><strong>Claude Firefox extension</strong> has direct page access and can call the API from its javascript tool.</p>
-            <p class="vibe-guide-text"><strong>OpenClaw</strong> uses CDP evaluate to run JS on the page.</p>
-            <p class="vibe-guide-text"><strong>Claude Code, Cursor, Windsurf</strong> can access the page via a DevTools MCP server or Playwright.</p>
+            <p class="vibe-guide-text">Any browser-capable AI agent with page JavaScript access can call the bridge API.</p>
+            <p class="vibe-guide-text">Agents using CDP evaluate can run bridge API methods directly on the page.</p>
+            <p class="vibe-guide-text">Agents can access the page via DevTools MCP or Playwright.</p>
           </div>
           <div class="vibe-guide-section">
             <div class="vibe-guide-label">Prompt to get started</div>
@@ -404,7 +404,7 @@ var VibeToolbarDocs = (() => {
           </div>
           <div class="vibe-guide-section">
             <div class="vibe-guide-label">Requirement</div>
-            <p class="vibe-guide-text">The extension must be active on the page for the bridge API to be available. This works best when the agent uses <strong>your browser</strong> (Claude Firefox, DevTools MCP), since the extension is already installed.</p>
+            <p class="vibe-guide-text">The extension must be active on the page for the bridge API to be available. This works best when the agent uses <strong>your browser</strong> (your browser session or DevTools MCP), since the extension is already installed.</p>
             <p class="vibe-guide-text">Agents that launch their own browser (Playwright, Puppeteer) won't have the extension loaded by default. This can be configured by passing the extension path at launch, but requires some local setup.</p>
           </div>
           <div class="vibe-guide-section">

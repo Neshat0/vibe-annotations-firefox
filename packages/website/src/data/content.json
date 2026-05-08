@@ -32,7 +32,7 @@
       },
       {
         "title": "3. AI Implements All",
-        "description": "Send everything to Claude Code, Cursor, GitHub Copilot, or Windsurf. Watch as every annotation becomes working code."
+        "description": "Send annotations to your AI coding agent and turn feedback into working code."
       }
     ]
   },
@@ -53,7 +53,7 @@
       },
       {
         "title": "Universal AI Support",
-        "description": "Works with Claude Code, Cursor, Windsurf, and any MCP-compatible coding agent. Just copy-paste the given lines on installation.",
+        "description": "Works with any MCP-compatible AI coding agent. Just copy-paste the given lines on installation.",
         "icon": "heroicons:sparkles"
       },
       {
@@ -83,7 +83,7 @@
       },
       {
         "question": "What are the installation steps?",
-        "answer": "1. Load the Vibe Annotations Firefox extension as a temporary add-on (Developer Edition/Nightly). 2. Download and run the MCP server locally. 3. Add the MCP configuration to your AI coding agent (Claude Code, Cursor, etc.). 4. Start annotating! The whole process takes less than 2 minutes."
+        "answer": "1. Load the Vibe Annotations Firefox extension as a temporary add-on (Developer Edition/Nightly). 2. Download and run the MCP server locally. 3. Add the MCP configuration to your AI coding agent (any MCP-compatible client). 4. Start annotating! The whole process takes less than 2 minutes."
       },
       {
         "question": "How much does it cost?",
