@@ -25,7 +25,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Environment (please complete the following information):**
  - OS: [e.g. macOS, Windows, Linux]
- - Browser: [e.g. Chrome, Brave]
+ - Browser: [e.g. Firefox Developer Edition, Firefox Nightly]
  - Browser Version: [e.g. 119]
  - Extension Version: [e.g. 1.0.0]
  - Server Version: [e.g. 0.1.2]

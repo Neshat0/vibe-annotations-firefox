@@ -8,7 +8,7 @@ Global MCP server for Vibe Annotations browser extension.
 npx vibe-annotations-server init
 ```
 
-Interactive wizard — installs the global package, starts the server on port 3846, configures your AI coding agent (Claude Code, Cursor, Windsurf, Codex, OpenClaw, VS Code), and links the Chrome extension. Supports these flags: `--agent <name>` (repeatable), `--non-interactive`, `--project` (use project scope instead of user), `--skip-server`, `--skip-extension`, `--reset`.
+Interactive wizard — installs the global package, starts the server on port 3846, configures your AI coding agent (Claude Code, Cursor, Windsurf, Codex, OpenClaw, VS Code), and links the Firefox extension. Supports these flags: `--agent <name>` (repeatable), `--non-interactive`, `--project` (use project scope instead of user), `--skip-server`, `--skip-extension`, `--reset`.
 
 ## Manual installation
 
@@ -143,7 +143,7 @@ Other code editors and tools that support SSE (Server-Sent Events) can also conn
 
 The server provides:
 - **SSE Endpoint** (`/sse`): For AI coding agent MCP connections
-- **HTTP API** (`/api/annotations`): For Chrome extension communication
+- **HTTP API** (`/api/annotations`): For Firefox extension communication
 - **Health Check** (`/health`): For status monitoring
 
 Data is stored in `~/.vibe-annotations/annotations.json`.

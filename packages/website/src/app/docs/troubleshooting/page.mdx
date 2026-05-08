@@ -51,17 +51,17 @@ The extension auto-activates on localhost URLs (`localhost`, `127.0.0.1`, `0.0.0
 Expected behavior for `file://` URLs. The extension automatically routes API calls through the background script. Check for the "Local file mode" indicator.
 
 If the extension doesn't load on local files:
-1. Go to `chrome://extensions/`
-2. Find "Vibe Annotations", click "Details"
-3. Enable "Allow access to file URLs"
+1. Go to `about:addons`
+2. Find "Vibe Annotations" and open its details
+3. Enable "Access your data for file URLs"
 4. Refresh the page
 
 ## Annotations not syncing
 
 - Check server status: `vibe-annotations-server status`
 - The extension syncs every 10 seconds when the server is online
-- Look for sync errors in the background service worker console (`chrome://extensions/` → Vibe Annotations → "Inspect views: service worker")
+- Look for sync errors in the background script console (`about:debugging#/runtime/this-firefox` → Vibe Annotations → "Inspect")
 
 ## Still stuck?
 
-Check [GitHub Issues](https://github.com/RaphaelRegnier/vibe-annotations/issues) or create a new one.
+Check [GitHub Issues](https://github.com/Neshat0/vibe-annotations-firefox/issues) or create a new one.

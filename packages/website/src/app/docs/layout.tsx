@@ -94,7 +94,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           </div>
           <div className="mt-8 space-y-3">
             <a
-              href={`https://github.com/RaphaelRegnier/vibe-annotations/releases/tag/v${getExtensionVersion()}`}
+              href={`https://github.com/Neshat0/vibe-annotations-firefox/releases/tag/v${getExtensionVersion()}`}
               target="_blank"
               rel="noopener noreferrer"
               className="block px-3 text-xs text-neutral-400 hover:text-neutral-600 transition-colors"
@@ -102,12 +102,12 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
               v{getExtensionVersion()}
             </a>
             <a
-              href="https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof/reviews"
+              href="https://github.com/Neshat0/vibe-annotations-firefox"
               target="_blank"
               rel="noopener noreferrer"
               className="block px-3 py-2 text-xs text-neutral-500 hover:text-neutral-700 bg-neutral-50 hover:bg-neutral-100 rounded-md transition-colors leading-relaxed"
             >
-              Enjoying Vibe Annotations? <span className="text-[#D03D68] font-medium">Leave a review</span>
+              Enjoying Vibe Annotations? <span className="text-[#D03D68] font-medium">Star the repo</span>
             </a>
           </div>
         </nav>

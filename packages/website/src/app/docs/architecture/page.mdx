@@ -6,13 +6,13 @@ Vibe Annotations is split into two independent pieces that communicate over HTTP
 
 ```
 Browser Extension  ← HTTP sync/CRUD →  MCP Server  ← MCP tools →  AI Agents
-   (Chrome)                             (port 3846)               (Claude Code,
+   (Firefox)                            (port 3846)               (Claude Code,
                                                                    Cursor, etc.)
 ```
 
 ## Browser Extension
 
-A Chrome MV3 extension built with vanilla JavaScript. No build step — load the directory as an unpacked extension.
+A Firefox WebExtension (MV3) built with vanilla JavaScript. No build step — load the directory as a temporary add-on in Firefox Developer Edition or Nightly.
 
 - **Content scripts** inject a floating toolbar overlay on localhost pages via a Shadow DOM root
 - **Inspection mode** lets users hover and click elements to annotate them
@@ -34,7 +34,7 @@ A global npm package (`vibe-annotations-server`) that runs as a background proce
 
 ## Data Flow
 
-1. User creates an annotation in the extension (stored in Chrome Storage)
+1. User creates an annotation in the extension (stored in Firefox storage)
 2. Background worker syncs it to the server via HTTP POST
 3. AI agent calls `read_annotations` via MCP to fetch pending annotations
 4. Agent implements the changes in source code

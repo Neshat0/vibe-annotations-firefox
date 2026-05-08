@@ -79,11 +79,11 @@
     "items": [
       {
         "question": "What browsers are compatible?",
-        "answer": "Vibe Annotations works with all Chromium-based browsers including Google Chrome, Microsoft Edge, Brave, Opera, Vivaldi, and Arc. Since it's built as a Chromium extension, it's compatible with any browser that supports the Chrome Web Store extensions."
+        "answer": "This Firefox-focused fork works with Firefox Developer Edition or Nightly with MV3 enabled. For Chromium-based browsers (Edge, Brave, Arc, Opera, Vivaldi), use the upstream Vibe Annotations extension."
       },
       {
         "question": "What are the installation steps?",
-        "answer": "1. Install the Vibe Annotations browser extension from the Chrome Web Store. 2. Download and run the MCP server locally. 3. Add the MCP configuration to your AI coding agent (Claude Code, Cursor, etc.). 4. Start annotating! The whole process takes less than 2 minutes."
+        "answer": "1. Load the Vibe Annotations Firefox extension as a temporary add-on (Developer Edition/Nightly). 2. Download and run the MCP server locally. 3. Add the MCP configuration to your AI coding agent (Claude Code, Cursor, etc.). 4. Start annotating! The whole process takes less than 2 minutes."
       },
       {
         "question": "How much does it cost?",

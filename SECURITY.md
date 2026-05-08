@@ -51,7 +51,7 @@ When we receive a security bug report, we will:
 
 When using Vibe Annotations:
 
-1. **Keep Updated**: Always use the latest version of both the Chrome extension and the server
+1. **Keep Updated**: Always use the latest version of both the Firefox extension and the server
 2. **Local Only**: The system is designed for localhost development only - never expose the server to the internet
 3. **Data Privacy**: Annotations are stored locally and never sent to external servers
 4. **Extension Permissions**: The extension only requests necessary permissions for localhost domains

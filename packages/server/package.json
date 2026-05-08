@@ -45,12 +45,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RaphaelRegnier/vibe-annotations.git",
+    "url": "git+https://github.com/Neshat0/vibe-annotations-firefox.git",
     "directory": "annotations-server"
   },
-  "homepage": "https://github.com/RaphaelRegnier/vibe-annotations#readme",
+  "homepage": "https://github.com/Neshat0/vibe-annotations-firefox#readme",
   "bugs": {
-    "url": "https://github.com/RaphaelRegnier/vibe-annotations/issues"
+    "url": "https://github.com/Neshat0/vibe-annotations-firefox/issues"
   },
   "publishConfig": {
     "access": "public"

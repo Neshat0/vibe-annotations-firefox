@@ -48,7 +48,7 @@ export default function Footer() {
                 <Link href="/terms" className="text-[15px] font-medium text-black hover:text-gray-600 transition-colors">
                   Terms
                 </Link>
-                <a href="https://github.com/RaphaelRegnier/vibe-annotations" target="_blank" rel="noopener noreferrer" className="text-[15px] font-medium text-black hover:text-gray-600 transition-colors">
+                <a href="https://github.com/Neshat0/vibe-annotations-firefox" target="_blank" rel="noopener noreferrer" className="text-[15px] font-medium text-black hover:text-gray-600 transition-colors">
                   GitHub
                 </a>
               </nav>
@@ -57,11 +57,11 @@ export default function Footer() {
             {/* Right Column: Get Extension Section */}
             <div className="flex flex-col gap-4 items-center">
               <p className="text-base font-medium text-red-600 leading-6">
-                Chromium extension
+                Firefox extension
               </p>
               <div className="flex flex-col gap-4">
                 <a 
-                  href="https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof?utm_source=item-share-cb" 
+                  href="/docs/installation" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-2.5 rounded-xl text-base font-medium transition-all shadow-lg hover:shadow-xl"
@@ -82,7 +82,7 @@ export default function Footer() {
             
             {/* Social Icons */}
             <div className="flex gap-6 items-center">
-              <a href="https://github.com/RaphaelRegnier/vibe-annotations" target="_blank" rel="noopener noreferrer" className="text-[#717680] hover:text-gray-900 transition-colors" aria-label="View Vibe Annotations source code on GitHub">
+              <a href="https://github.com/Neshat0/vibe-annotations-firefox" target="_blank" rel="noopener noreferrer" className="text-[#717680] hover:text-gray-900 transition-colors" aria-label="View Vibe Annotations source code on GitHub">
                 <Icon icon="mdi:github" className="w-6 h-6" />
               </a>
               <a href="https://x.com/Raph_Regnier" target="_blank" rel="noopener noreferrer" className="text-[#717680] hover:text-gray-900 transition-colors" aria-label="Follow Raphael Regnier on X (Twitter)">

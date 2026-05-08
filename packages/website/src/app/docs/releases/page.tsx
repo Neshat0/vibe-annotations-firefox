@@ -14,7 +14,7 @@ type Release = {
 async function getReleases(): Promise<Release[]> {
   try {
     const res = await fetch(
-      'https://api.github.com/repos/RaphaelRegnier/vibe-annotations/releases?per_page=10',
+      'https://api.github.com/repos/Neshat0/vibe-annotations-firefox/releases?per_page=10',
       { next: { revalidate: 3600 } }
     )
     if (!res.ok) return []
@@ -47,7 +47,7 @@ export default async function ReleasesPage() {
         <h1 className="text-xl font-semibold mb-4">Release Notes</h1>
         <p className="text-neutral-500">
           Unable to load releases. View them on{' '}
-          <a href="https://github.com/RaphaelRegnier/vibe-annotations/releases" className="text-[#D03D68] hover:underline" target="_blank" rel="noopener">
+          <a href="https://github.com/Neshat0/vibe-annotations-firefox/releases" className="text-[#D03D68] hover:underline" target="_blank" rel="noopener">
             GitHub
           </a>.
         </p>

@@ -4,13 +4,14 @@ export const metadata = { title: 'Installation' }
 
 ## 1. Install the Browser Extension
 
-**From Chrome Web Store (recommended):**
+**Firefox Developer Edition / Nightly (recommended for this fork):**
 
-Install from the [Chrome Web Store](https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof). Works on Chrome, Edge, Brave, Arc, Opera, and Vivaldi.
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on…**.
+3. Select `/packages/extension/manifest.json`.
+4. Pin the extension and open the popup from the toolbar.
 
-**For development:**
-
-Go to `chrome://extensions/`, enable Developer mode, click "Load unpacked", and select the `/packages/extension` directory.
+Need MV3 settings or file URL access? See the [Firefox setup guide](https://github.com/Neshat0/vibe-annotations-firefox/blob/main/packages/extension/FIREFOX.md).
 
 ## 2. Run the Setup Wizard (recommended)
 
@@ -25,7 +26,7 @@ One interactive command that:
 - Installs `vibe-annotations-server` globally
 - Starts the server in the background on port 3846
 - Configures your AI coding agent (Claude Code, Cursor, Windsurf, Codex, OpenClaw, VS Code)
-- Points you to the Chrome Web Store if the extension isn't installed yet
+- Points you to the Firefox setup guide if the extension isn't installed yet
 
 Useful flags: `--agent <name>` (repeatable), `--project` (project scope instead of user), `--non-interactive`, `--skip-server`, `--skip-extension`, `--reset`.
 
@@ -41,7 +42,7 @@ vibe-annotations-server start
 Then [connect your AI coding agent](/docs/mcp-setup) manually.
 
 The server runs on port 3846 and provides:
-- HTTP API for the Chrome extension (auto-sync)
+- HTTP API for the Firefox extension (auto-sync)
 - MCP endpoint for AI coding agents (`/mcp`)
 - Health checks (`/health`)
 
@@ -57,9 +58,9 @@ Open any localhost page, click **Annotate** in the toolbar, and click any elemen
 
 To annotate local HTML files (`file://` URLs):
 
-1. Go to `chrome://extensions/`
-2. Find "Vibe Annotations" and click "Details"
-3. Enable "Allow access to file URLs"
+1. Go to `about:addons`
+2. Find "Vibe Annotations" and open its details
+3. Enable "Access your data for file URLs"
 4. Refresh your local HTML file
 
 This is only needed for local files. Localhost dev servers work without this step.
@@ -84,5 +85,5 @@ npm uninstall -g vibe-annotations-server
 # Remove data files
 rm -rf ~/.vibe-annotations
 
-# Remove the browser extension from chrome://extensions/
+# Remove the browser extension from about:addons
 ```

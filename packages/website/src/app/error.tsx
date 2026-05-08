@@ -70,7 +70,7 @@ export default function Error({
           <p className="text-sm text-gray-500 mb-4">Still having issues?</p>
           <div className="flex justify-center gap-6">
             <a 
-              href="https://github.com/RaphaelRegnier/vibe-annotations/issues" 
+              href="https://github.com/Neshat0/vibe-annotations-firefox/issues" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-sm text-gray-600 hover:text-gray-900 transition-colors"

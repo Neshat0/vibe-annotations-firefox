@@ -75,7 +75,7 @@ class VibeAnnotationsBackground {
         updateInfo: {
           hasUpdate: true, previousVersion, currentVersion,
           timestamp: Date.now(),
-          releaseUrl: `https://github.com/RaphaelRegnier/vibe-annotations/releases/tag/v${currentVersion}`
+          releaseUrl: `https://github.com/Neshat0/vibe-annotations-firefox/releases/tag/v${currentVersion}`
         }
       });
       ext.action.setBadgeText({ text: 'NEW' });
