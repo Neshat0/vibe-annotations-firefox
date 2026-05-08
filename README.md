@@ -10,6 +10,24 @@
 
 Visual feedback tool for web development. Annotate elements on your pages, make design tweaks, and share with AI coding agents or teammates.
 
+## Credits, License, and Attribution
+
+- Original project: [RaphaelRegnier/vibe-annotations](https://github.com/RaphaelRegnier/vibe-annotations)
+- Primary author and copyright holder: Raphael Regnier (Spellbind Creative Studio)
+- Vibe Annotations name/logo/IP: Raphael Regnier / Spellbind Creative Studio
+- This repository is a Firefox-focused fork/adaptation of the upstream project
+- All core product credit goes to the upstream author
+- Firefox adaptation in this fork was assembled with assistance from GitHub Copilot, ChatGPT, and Codex
+- No ownership claim beyond fork-specific Firefox adaptation
+
+### License Grant
+
+Vibe Annotations is licensed under the PolyForm Shield License. Subject to compliance with license and terms, you are granted a non-exclusive, worldwide, royalty-free right to use, copy, modify, and distribute the software according to license terms.
+
+### Disclaimer
+
+Software is provided "as is," without warranty. You remain responsible for reviewing, testing, and validating AI-generated code changes before committing or deploying.
+
 ## Get started
 
 **1.** Install the Firefox extension (temporary add-on). See the [Firefox setup guide](packages/extension/FIREFOX.md).
