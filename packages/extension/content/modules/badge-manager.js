@@ -70,7 +70,7 @@ var VibeBadgeManager = (() => {
       const label = entry.el.querySelector('.vibe-badge-label');
       if (!label) return;
       if (watchMode) {
-        label.innerHTML = EYE_SVG;
+        vibeSetHTML(label, EYE_SVG);
         entry.el.classList.add('watching');
       } else {
         label.textContent = (i + 1).toString();
@@ -138,7 +138,7 @@ var VibeBadgeManager = (() => {
     badge.className = 'vibe-badge' + (watchMode ? ' watching' : '');
     const label = document.createElement('span');
     label.className = 'vibe-badge-label';
-    if (watchMode) { label.innerHTML = EYE_SVG; } else { label.textContent = (lastProjectTotal + 1).toString(); }
+    if (watchMode) { vibeSetHTML(label, EYE_SVG); } else { label.textContent = (lastProjectTotal + 1).toString(); }
     badge.appendChild(label);
     badge.style.top = `${clientY - 11}px`;
     badge.style.left = `${clientX}px`;
@@ -222,7 +222,7 @@ var VibeBadgeManager = (() => {
     // Label span (number or eye)
     const label = document.createElement('span');
     label.className = 'vibe-badge-label';
-    if (watchMode) { label.innerHTML = EYE_SVG; } else { label.textContent = index.toString(); }
+    if (watchMode) { vibeSetHTML(label, EYE_SVG); } else { label.textContent = index.toString(); }
     badge.appendChild(label);
 
     // Tooltip
@@ -373,7 +373,7 @@ var VibeBadgeManager = (() => {
       const label = entry.el.querySelector('.vibe-badge-label');
       if (!label) return;
       if (watchMode) {
-        label.innerHTML = EYE_SVG;
+        vibeSetHTML(label, EYE_SVG);
       } else {
         label.textContent = (i + 1).toString();
       }

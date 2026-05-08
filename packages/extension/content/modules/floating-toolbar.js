@@ -111,7 +111,7 @@ var VibeToolbar = (() => {
     toolbarEl = document.createElement('div');
     toolbarEl.className = 'vibe-toolbar';
 
-    toolbarEl.innerHTML = `
+    vibeSetHTML(toolbarEl, `
       <img class="vibe-toolbar-logo" src="${logoUrl}" />
       <div class="vibe-toolbar-separator"></div>
       <div class="vibe-toolbar-middle">
@@ -149,7 +149,7 @@ var VibeToolbar = (() => {
       <button class="vibe-toolbar-close vibe-tb-close" title="Close Vibe Annotations">
         ${ICONS.close}
       </button>
-    `;
+    `);
 
     root.appendChild(toolbarEl);
     wireButtons();
@@ -315,7 +315,7 @@ var VibeToolbar = (() => {
       routesHTML = '<div style="padding:24px 16px;text-align:center;color:var(--v-instruction-text);font-size:13px;">No annotations yet</div>';
     }
 
-    viewAllPanel.innerHTML = `
+    vibeSetHTML(viewAllPanel, `
       <div class="vibe-viewall-header">
         <span class="vibe-viewall-url">${escapeHTML(hostname)}</span>
         <div class="vibe-viewall-actions">
@@ -325,7 +325,7 @@ var VibeToolbar = (() => {
         </div>
       </div>
       <div class="vibe-viewall-routes">${routesHTML}</div>
-    `;
+    `);
 
     toolbarEl.appendChild(viewAllPanel);
 
@@ -343,9 +343,9 @@ var VibeToolbar = (() => {
       }
       // Flash checkmark feedback
       const origHTML = copyBtn.innerHTML;
-      copyBtn.innerHTML = ICONS.check;
+      vibeSetHTML(copyBtn, ICONS.check);
       copyBtn.style.color = 'var(--v-status-online)';
-      setTimeout(() => { copyBtn.innerHTML = origHTML; copyBtn.style.color = ''; }, 1500);
+      setTimeout(() => { vibeSetHTML(copyBtn, origHTML); copyBtn.style.color = ''; }, 1500);
 
       if (clearOnCopy) {
         for (const a of all) await VibeAPI.deleteAnnotation(a.id);
@@ -491,7 +491,7 @@ var VibeToolbar = (() => {
 
     const route = vibeLocationPath(window.location);
 
-    settingsDropdown.innerHTML = `
+    vibeSetHTML(settingsDropdown, `
       <div class="vibe-settings-header">
         <div>
           <span class="vibe-settings-title">${escapeHTML(route)}</span>
@@ -544,7 +544,7 @@ var VibeToolbar = (() => {
           <span>Import annotations</span>
         </button>
       </div>
-    `;
+    `);
 
     toolbarEl.appendChild(settingsDropdown);
 
@@ -765,15 +765,15 @@ var VibeToolbar = (() => {
     const statusEl = toolbarEl.querySelector('.vibe-tb-status');
     if (statusEl) {
       if (watcherActive) {
-        statusEl.innerHTML = ICONS.eye;
+        vibeSetHTML(statusEl, ICONS.eye);
         statusEl.style.color = 'var(--v-status-watching)';
         statusEl.title = 'Watching — click to stop';
       } else if (serverOnline) {
-        statusEl.innerHTML = ICONS.serverRack;
+        vibeSetHTML(statusEl, ICONS.serverRack);
         statusEl.style.color = 'var(--v-status-online)';
         statusEl.title = 'MCP Server online';
       } else {
-        statusEl.innerHTML = ICONS.serverRack;
+        vibeSetHTML(statusEl, ICONS.serverRack);
         statusEl.style.color = 'var(--v-status-offline)';
         statusEl.title = 'MCP Server offline';
       }
@@ -922,7 +922,7 @@ var VibeToolbar = (() => {
     return new Promise(resolve => {
       const backdrop = document.createElement('div');
       backdrop.className = 'vibe-confirm-backdrop';
-      backdrop.innerHTML = `
+      vibeSetHTML(backdrop, `
         <div class="vibe-confirm">
           <div class="vibe-confirm-title">Delete all annotations?</div>
           <div class="vibe-confirm-msg">All annotations on this page will be permanently deleted.</div>
@@ -935,7 +935,7 @@ var VibeToolbar = (() => {
             <button class="vibe-btn vibe-btn-danger vibe-confirm-yes">Delete All</button>
           </div>
         </div>
-      `;
+      `);
       root.appendChild(backdrop);
 
       backdrop.querySelector('.vibe-confirm-no').addEventListener('click', () => { backdrop.remove(); resolve(false); });
@@ -959,7 +959,7 @@ var VibeToolbar = (() => {
 
     const backdrop = document.createElement('div');
     backdrop.className = 'vibe-confirm-backdrop';
-    backdrop.innerHTML = `
+    vibeSetHTML(backdrop, `
       <div class="vibe-confirm">
         <div class="vibe-confirm-title">Export annotations</div>
         <div class="vibe-confirm-msg">Choose what to include in the export file.</div>
@@ -971,7 +971,7 @@ var VibeToolbar = (() => {
           <button class="vibe-btn vibe-btn-secondary vibe-export-cancel">Cancel</button>
         </div>
       </div>
-    `;
+    `);
     root.appendChild(backdrop);
 
     backdrop.querySelector('.vibe-export-cancel').addEventListener('click', () => backdrop.remove());
@@ -1124,7 +1124,7 @@ var VibeToolbar = (() => {
       const backdrop = document.createElement('div');
       backdrop.className = 'vibe-confirm-backdrop';
       const skipText = skipped > 0 ? `<br>${skipped} already exist and will be skipped.` : '';
-      backdrop.innerHTML = `
+      vibeSetHTML(backdrop, `
         <div class="vibe-confirm">
           <div class="vibe-confirm-title">Import annotations</div>
           <div class="vibe-confirm-msg">${newCount} annotation${newCount !== 1 ? 's' : ''} will be imported.${skipText}</div>
@@ -1133,7 +1133,7 @@ var VibeToolbar = (() => {
             <button class="vibe-btn vibe-btn-primary vibe-confirm-yes">Import</button>
           </div>
         </div>
-      `;
+      `);
       root.appendChild(backdrop);
 
       backdrop.querySelector('.vibe-confirm-no').addEventListener('click', () => { backdrop.remove(); resolve(false); });
@@ -1152,7 +1152,7 @@ var VibeToolbar = (() => {
     return new Promise(resolve => {
       const backdrop = document.createElement('div');
       backdrop.className = 'vibe-confirm-backdrop';
-      backdrop.innerHTML = `
+      vibeSetHTML(backdrop, `
         <div class="vibe-confirm">
           <div class="vibe-confirm-title">Remap annotations?</div>
           <div class="vibe-confirm-msg">
@@ -1167,7 +1167,7 @@ var VibeToolbar = (() => {
             <button class="vibe-btn vibe-btn-primary vibe-confirm-yes">Remap & Import</button>
           </div>
         </div>
-      `;
+      `);
       root.appendChild(backdrop);
 
       backdrop.querySelector('.vibe-confirm-no').addEventListener('click', () => { backdrop.remove(); resolve(false); });
@@ -1182,7 +1182,7 @@ var VibeToolbar = (() => {
 
     const backdrop = document.createElement('div');
     backdrop.className = 'vibe-confirm-backdrop';
-    backdrop.innerHTML = `
+    vibeSetHTML(backdrop, `
       <div class="vibe-confirm">
         <div class="vibe-confirm-title">${escapeHTML(title)}</div>
         <div class="vibe-confirm-msg">${escapeHTML(message)}</div>
@@ -1190,7 +1190,7 @@ var VibeToolbar = (() => {
           <button class="vibe-btn vibe-btn-secondary vibe-confirm-no">OK</button>
         </div>
       </div>
-    `;
+    `);
     root.appendChild(backdrop);
 
     backdrop.querySelector('.vibe-confirm-no').addEventListener('click', () => backdrop.remove());

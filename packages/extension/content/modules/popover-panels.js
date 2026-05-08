@@ -743,7 +743,7 @@ var VibePopoverPanels = (() => {
           html += `<button class="vibe-matrix-cell ${isActive ? 'active' : ''}" data-jc="${jc}" data-ai="${ai}" type="button" title="${label}"><span class="vibe-matrix-dot"></span></button>`;
         }
       }
-      matrixContainer.innerHTML = html;
+      vibeSetHTML(matrixContainer, html);
       wireMatrixCells();
     }
 
@@ -1403,7 +1403,7 @@ var VibePopoverPanels = (() => {
       palette.className = 'vibe-color-palette';
 
       if (vars.length === 0) {
-        palette.innerHTML = '<span class="vibe-color-palette-empty">No CSS variables detected</span>';
+        vibeSetHTML(palette, '<span class="vibe-color-palette-empty">No CSS variables detected</span>');
       } else {
         vars.forEach(v => {
           const btn = document.createElement('button');

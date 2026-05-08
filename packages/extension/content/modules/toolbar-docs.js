@@ -14,8 +14,8 @@ var VibeToolbarDocs = (() => {
       btn.addEventListener('click', async () => {
         const cmd = btn.closest('.vibe-guide-cmd').dataset.cmd;
         await navigator.clipboard.writeText(cmd);
-        btn.innerHTML = ICONS.check;
-        setTimeout(() => { btn.innerHTML = ICONS.clipboard; }, 1500);
+        vibeSetHTML(btn, ICONS.check);
+        setTimeout(() => { vibeSetHTML(btn, ICONS.clipboard); }, 1500);
       });
     });
   }
@@ -39,14 +39,14 @@ var VibeToolbarDocs = (() => {
 
     const version = ext.runtime.getManifest().version;
 
-    header.innerHTML = `
+    vibeSetHTML(header, `
       <button class="vibe-guide-back-btn" type="button" style="display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:var(--v-text-secondary);font-family:var(--v-font);font-size:13px;padding:0;">
         ${ICONS.back}
         <span style="color:var(--v-text-primary);font-weight:600;">Documentation</span>
       </button>
-    `;
+    `);
 
-    body.innerHTML = `
+    vibeSetHTML(body, `
       <button class="vibe-settings-link vibe-get-started-guide-btn" type="button">
         ${ICONS.rocket}
         <span>Get started</span>
@@ -92,7 +92,7 @@ var VibeToolbarDocs = (() => {
         ${ICONS.newspaper}
         <span>Release notes</span>
       </a>
-    `;
+    `);
 
     header.querySelector('.vibe-guide-back-btn').addEventListener('click', () => {
       callbacks.onBack();
@@ -112,14 +112,14 @@ var VibeToolbarDocs = (() => {
     const body = dropdown.querySelector('.vibe-settings-body');
     if (!header || !body) return;
 
-    header.innerHTML = `
+    vibeSetHTML(header, `
       <button class="vibe-guide-back-btn" type="button" style="display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:var(--v-text-secondary);font-family:var(--v-font);font-size:13px;padding:0;">
         ${ICONS.back}
         <span style="color:var(--v-text-primary);font-weight:600;">Get started</span>
       </button>
-    `;
+    `);
 
-    body.innerHTML = `
+    vibeSetHTML(body, `
       <div class="vibe-guide">
         <div class="vibe-guide-section">
           <div class="vibe-guide-label">1. Start annotating</div>
@@ -192,7 +192,7 @@ var VibeToolbarDocs = (() => {
           </div>
         </div>
       </div>
-    `;
+    `);
 
     header.querySelector('.vibe-guide-back-btn').addEventListener('click', () => showDocumentation(dropdown, ICONS, callbacks));
     wireTabSwitching(body);
@@ -418,14 +418,14 @@ var VibeToolbarDocs = (() => {
     const wf = workflows[type];
     if (!wf) return;
 
-    header.innerHTML = `
+    vibeSetHTML(header, `
       <button class="vibe-guide-back-btn" type="button" style="display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:var(--v-text-secondary);font-family:var(--v-font);font-size:13px;padding:0;">
         ${ICONS.back}
         <span style="color:var(--v-text-primary);font-weight:600;">${wf.title}</span>
       </button>
-    `;
+    `);
 
-    body.innerHTML = `<div class="vibe-guide">${wf.content}</div>`;
+    vibeSetHTML(body, `<div class="vibe-guide">${wf.content}</div>`);
 
     header.querySelector('.vibe-guide-back-btn').addEventListener('click', () => showDocumentation(dropdown, ICONS, callbacks));
     wireTabSwitching(body);

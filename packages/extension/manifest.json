@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Clone Firefox Vibe Annotations for AI Agents",
+  "name": "Clone Vibe Annotations for AI Agents",
   "version": "1.6.3",
   "description": "Visual annotations for localhost dev projects. Send feedback to AI coding agents via MCP.",
   "author": "Raphael Regnier - Spellbind Creative Studio",
@@ -12,7 +12,7 @@
           "websiteContent"
         ]
       },
-      "strict_min_version": "121.0"
+      "strict_min_version": "142.0"
     }
   },
   "permissions": [

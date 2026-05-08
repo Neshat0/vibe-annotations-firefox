@@ -114,7 +114,7 @@
   } else {
     // --- Non-supported site — offer per-site or all-sites enable ---
     messageEl.classList.remove('hidden');
-    messageEl.innerHTML = '<strong>This site isn\'t a local development URL.</strong> Enable it for this site, or allow on all sites to skip this step everywhere.';
+    vibeSetHTML(messageEl, '<strong>This site isn\'t a local development URL.</strong> Enable it for this site, or allow on all sites to skip this step everywhere.');
     siteUrlEl.classList.remove('hidden');
     siteUrlEl.textContent = origin;
     mainBtn.classList.remove('hidden');
@@ -139,7 +139,7 @@
       messageEl.classList.add('hidden');
       siteUrlEl.classList.add('hidden');
       successEl.classList.remove('hidden');
-      successEl.innerHTML = `<strong>${label}</strong> Page is reloading.`;
+      vibeSetHTML(successEl, `<strong>${label}</strong> Page is reloading.`);
       mainBtn.classList.add('hidden');
       allSitesBtn.classList.add('hidden');
       setTimeout(() => window.close(), 1500);

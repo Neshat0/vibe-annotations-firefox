@@ -117,7 +117,7 @@ var VibeAnnotationPopover = (() => {
       ? `${context.tag}.${context.classes[0]}`
       : context.tag;
 
-    popover.innerHTML = `
+    vibeSetHTML(popover, `
       <div class="vibe-drag-handle"></div>
       <div class="vibe-popover-title">
         <span>Editing <code>${P.escapeHTML(selectorLabel)}</code></span>
@@ -144,7 +144,7 @@ var VibeAnnotationPopover = (() => {
           <button class="vibe-btn vibe-btn-primary vibe-save-btn">${isEdit ? 'Save' : 'Save as pointer'}</button>
         </div>
       </div>
-    `;
+    `);
 
     anchor.appendChild(popover);
     currentPopover = anchor;
@@ -588,7 +588,7 @@ var VibeAnnotationPopover = (() => {
     return new Promise(resolve => {
       const backdrop = document.createElement('div');
       backdrop.className = 'vibe-confirm-backdrop';
-      backdrop.innerHTML = `
+      vibeSetHTML(backdrop, `
         <div class="vibe-confirm">
           <div class="vibe-confirm-title">${P.escapeHTML(title)}</div>
           <div class="vibe-confirm-msg">${P.escapeHTML(message)}</div>
@@ -601,7 +601,7 @@ var VibeAnnotationPopover = (() => {
             <button class="vibe-btn vibe-btn-danger vibe-confirm-yes">Delete</button>
           </div>
         </div>
-      `;
+      `);
       root.appendChild(backdrop);
 
       backdrop.querySelector('.vibe-confirm-no').addEventListener('click', () => {
