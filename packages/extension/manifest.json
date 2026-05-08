@@ -108,7 +108,8 @@
     }
   },
   "background": {
-    "scripts": ["background/background.js"]
+    "page": "background/background.html",
+    "persistent": false
   },
   "web_accessible_resources": [
     "content/bridge-api.js",
