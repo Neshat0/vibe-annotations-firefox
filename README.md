@@ -12,6 +12,19 @@ Visual feedback tool for web development. Annotate elements on your pages, make 
 
 **1.** Install the [browser extension](https://chromewebstore.google.com/detail/gkofobaeeepjopdpahbicefmljcmpeof)
 
+### Firefox Developer Edition (this fork)
+
+If you use Firefox Developer Edition, install the extension as a temporary add-on:
+
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on…**.
+3. Select `packages/extension/manifest.json` from your cloned repository.
+4. Pin the extension and open the popup from the toolbar.
+5. Open a localhost page and start annotating.
+
+Note: Temporary add-ons are removed when Firefox fully restarts, so you need to load it again next session.  
+More Firefox details and troubleshooting: [`packages/extension/FIREFOX.md`](packages/extension/FIREFOX.md).
+
 **2.** Run the setup wizard
 
 ```bash
