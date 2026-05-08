@@ -29,6 +29,7 @@ const CONTENT_SCRIPT_FILES = [
 class VibeAnnotationsBackground {
   constructor() {
     this._storageQueue = Promise.resolve();
+    this._injectedTabUrls = new Map();
     this.init();
   }
 
@@ -173,9 +174,15 @@ class VibeAnnotationsBackground {
         if (await isSupportedUrl(tab.url)) await updateBadge(tabId, tab.url);
         else await clearBadge(tabId);
         if (!supportsDynamicContentScriptRegistration() && await isEnabledSite(tab.url)) {
-          await this.injectEnabledSiteScripts(tabId);
+          await this.injectEnabledSiteScripts(tabId, tab.url);
+        } else {
+          this._injectedTabUrls.delete(tabId);
         }
       }
+    });
+
+    ext.tabs.onRemoved.addListener((tabId) => {
+      this._injectedTabUrls.delete(tabId);
     });
   }
 
@@ -372,13 +379,16 @@ class VibeAnnotationsBackground {
     if (tabId) await ext.tabs.reload(tabId);
   }
 
-  async injectEnabledSiteScripts(tabId) {
+  async injectEnabledSiteScripts(tabId, url) {
+    if (this._injectedTabUrls.get(tabId) === url) return;
     if (!ext.scripting?.executeScript) return;
     try {
       await ext.scripting.executeScript({ target: { tabId }, files: CONTENT_SCRIPT_FILES });
+      this._injectedTabUrls.set(tabId, url);
       try {
         await ext.scripting.executeScript({ target: { tabId }, files: ['content/bridge-api.js'], world: 'MAIN' });
-      } catch {
+      } catch (worldError) {
+        console.warn('MAIN world bridge injection failed, retrying isolated world:', worldError);
         await ext.scripting.executeScript({ target: { tabId }, files: ['content/bridge-api.js'] });
       }
     } catch (err) {
