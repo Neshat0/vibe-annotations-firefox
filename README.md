@@ -10,6 +10,11 @@
 
 Visual feedback tool for web development. Annotate elements on your pages, make design tweaks, and share with AI coding agents or teammates.
 
+## Why this fork exists
+
+I use Firefox as my daily browser and could not find an alternative that matched this workflow on Firefox.  
+This fork is my attempt to contribute back to open source by making upstream idea usable in Firefox-first development setups.
+
 ## Credits, License, and Attribution
 
 - Original project: [RaphaelRegnier/vibe-annotations](https://github.com/RaphaelRegnier/vibe-annotations)
